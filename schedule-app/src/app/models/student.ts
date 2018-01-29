@@ -1,4 +1,5 @@
 import { Course } from './course';
+import { Faculty } from './faculty';
 
 export class Student {
     constructor(
@@ -11,6 +12,7 @@ export class Student {
         public majors: [string],
         public minors: [string],
         public graduationDate: string,
-        public courses: [Course]
+        public courses: [Course],
+        public advisor: Faculty
     ) { }
 }

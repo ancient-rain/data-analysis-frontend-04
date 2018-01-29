@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="isStudent(student);">
   <mat-card-content>
     <table class="table">
       <thead>
@@ -17,7 +17,9 @@
         </tr>
         <tr *ngFor="let day of days">
           <th class="day">{{day}}</th>
-          <th *ngFor="let hour of hours"></th>
+          <th *ngFor="let hour of hours">
+
+          </th>
         </tr>
       </thead>
     </table>

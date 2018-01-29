@@ -36,6 +36,7 @@ export class StudentTermInfoComponent implements OnInit {
     this.studentService.getStudentTermInfo(this.username, this.term)
       .subscribe(student => {
         this.student = student;
+        console.log(this.student);
       },
       err => {
         console.log(err);
