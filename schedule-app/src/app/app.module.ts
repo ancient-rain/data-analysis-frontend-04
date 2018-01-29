@@ -1,11 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-//import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
 import {
   MatButtonModule,
   MatCardModule,
@@ -18,10 +10,17 @@ import {
   MatRippleModule,
   MatSnackBarModule,
   MatToolbarModule,
-
 } from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
-
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { EmitterService } from './services/emitter.service';
+import { StudentModule } from './student/student.module';
 
 export const MaterialModules = [
   MatButtonModule,
@@ -40,14 +39,19 @@ export const MaterialModules = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     MaterialModules,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule,
+    AppRoutingModule,
+    StudentModule
   ],
-  providers: [],
+  providers: [
+    EmitterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

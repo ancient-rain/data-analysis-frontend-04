@@ -15,25 +15,30 @@ export class StudentTermInfoComponent implements OnInit {
   username: string;
   term: string;
 
-  constructor(private studentService: StudentService) { }
+  constructor(private studentService: StudentService) {
+    this.getHeaders();
+  }
 
   getHeaders() {
     const url = window.location.href;
-    console.log(url);
+    const params = url.split('/');
+    this.username = params[params.length - 2];
+    this.term = params[params.length - 1];
   }
 
-  // loadStudent() {
-  //   this.studentService.getStudentTermInfo(this.username, this.term)
-  //     .subscribe(student =>
-  //       this.student = student,
-  //     err => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
+  loadStudent() {
+    this.studentService.getStudentTermInfo(this.username, this.term)
+      .subscribe(student => {
+        this.student = student;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 
   ngOnInit() {
-    // this.loadStudent();
+    this.loadStudent();
   }
 
 }
