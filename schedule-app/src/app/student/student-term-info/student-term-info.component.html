@@ -2,19 +2,12 @@
   <div class="row">
     <div class="col-md-12">
       <div class="terms" fxLayout="row" fxLayoutAlign="space-around center">
-        <button mat-button>201410</button>
-        <button mat-button>201420</button>
-        <button mat-button>201430</button>
-        <button mat-button>201510</button>
-        <button mat-button>201520</button>
-        <button mat-button>201530</button>
-        <button mat-button>201610</button>
-        <button mat-button>201620</button>
-        <button mat-raised-button color="secondary">201630</button>
-        <button mat-button>201640</button>
-        <button mat-button>201710</button>
-        <button mat-button>201720</button>
-        <button mat-button>201730</button>
+        <div *ngFor="let term of terms">
+          <button mat-raised-button *ngIf="term === student.term; else normalButton">{{term}}</button>
+          <ng-template #normalButton>
+            <button mat-button (click)="switchTerm(term);">{{term}}</button>
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>

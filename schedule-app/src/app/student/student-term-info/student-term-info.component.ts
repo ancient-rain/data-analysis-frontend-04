@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 import { Student } from '../../models/student';
 import { StudentService } from '../../services/student.service';
@@ -11,12 +12,16 @@ import { EmitterService } from '../../services/emitter.service';
   styleUrls: ['./student-term-info.component.css']
 })
 export class StudentTermInfoComponent implements OnInit {
+  private termId = 'SWITCH_TERM';
   student: Student;
   username: string;
   term: string;
+  terms: [string];
 
-  constructor(private studentService: StudentService) {
+  constructor(private studentService: StudentService, private router: Router) {
     this.getHeaders();
+    this.terms = ['201410', '201420', '201430', '201510', '201520', '201530',
+      '201610', '201620', '201630', '201710', '201720', '201730'];
   }
 
   getHeaders() {
@@ -34,7 +39,18 @@ export class StudentTermInfoComponent implements OnInit {
       err => {
         console.log(err);
       }
-    );
+      );
+  }
+
+  isCurrentTerm(term: string) {
+    console.log(this.term === term ? true : false);
+    return this.term === term ? true : false;
+  }
+
+  switchTerm(term: string) {
+    this.router.navigate(['student', this.username, term]);
+    /* without refreshing it won't load new content, not sure why */
+    document.location.reload(true);
   }
 
   ngOnInit() {
