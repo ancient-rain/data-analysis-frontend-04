@@ -18,7 +18,7 @@
         <tr *ngFor="let day of days">
           <th class="day">{{day}}</th>
           <th *ngFor="let hour of hours">
-            <p *ngIf="getValue(day, hour);">{{curVal}}</p>
+            <span *ngIf="getValue(day, hour);">{{curVal}}</span>
           </th>
         </tr>
       </thead>

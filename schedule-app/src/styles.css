@@ -1,16 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 body {
-    background-color: #eee;
+  background-color: #eee;
 }
 
 .row {
-    margin: 15px;
+  margin: 15px;
 }
 
 @media (min-width: 1400px) {
-    .container {
-      max-width: 1340px;
-    }
+  .container {
+    max-width: 1340px;
   }
+}
+
+a {
+  color: #2196F3;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: #0a6ebd;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a:not([href]):not([tabindex]) {
+  color: #2196F3;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):hover,
+a:not([href]):not([tabindex]):focus {
+  color: #0a6ebd;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a:not([href]):not([tabindex]):focus {
+  outline: 1;
+}

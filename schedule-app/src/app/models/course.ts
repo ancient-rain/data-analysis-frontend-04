@@ -8,5 +8,6 @@ export class Course {
         public creditHours: string,
         public meetTimes: string,
         public instructor: string,
+        public filteredTimes: string
     ) { }
 }
