@@ -1,1 +1,34 @@
-<p *ngFor="let student of student">{{student.username}}</p>
+<div *ngFor="let student of student">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="terms" fxLayout="row" fxLayoutAlign="space-around center">
+        <button mat-button>201410</button>
+        <button mat-button>201420</button>
+        <button mat-button>201430</button>
+        <button mat-button>201510</button>
+        <button mat-button>201520</button>
+        <button mat-button>201530</button>
+        <button mat-button>201610</button>
+        <button mat-button>201620</button>
+        <button mat-raised-button color="secondary">201630</button>
+        <button mat-button>201640</button>
+        <button mat-button>201710</button>
+        <button mat-button>201720</button>
+        <button mat-button>201730</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <app-student-info [student]="student"></app-student-info>
+    </div>
+    <div class="col-md-8">
+      <app-student-course-info [student]="student"></app-student-course-info>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-student-schedule [student]="student"></app-student-schedule>
+    </div>
+  </div>
+</div>
