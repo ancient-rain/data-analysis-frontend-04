@@ -1,11 +1,3 @@
-/* tr:nth-child(even) {
-    background-color: #fff;
-}
-
-tr:nth-child(odd) {
-    background-color: #eee;
-} */
-
 tr.headers {
-    background-color: #ddd;
+    background-color: #dee2e6;
 }
