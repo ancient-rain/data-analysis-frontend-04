@@ -16,13 +16,10 @@ export class StudentTermInfoComponent implements OnInit {
   student: Student;
   username: string;
   term: string;
-  terms: [string];
+  terms;
 
   constructor(private studentService: StudentService, private router: Router) {
     this.getHeaders();
-    /* will have to add information to get the list of the student's terms that they have been in */
-    this.terms = ['201410', '201420', '201430', '201510', '201520', '201530',
-      '201610', '201620', '201630', '201710', '201720', '201730'];
   }
 
   getHeaders() {
@@ -36,17 +33,17 @@ export class StudentTermInfoComponent implements OnInit {
     this.studentService.getStudentTermInfo(this.username, this.term)
       .subscribe(student => {
         this.student = student;
-        console.log(this.student);
+        const curTerms = [];
+        for (let i = 0; i < this.student[0].terms.length; i++) {
+          const term = this.student[0].terms[i].term;
+          curTerms.push(term);
+        }
+        this.terms = curTerms;
       },
       err => {
         console.log(err);
       }
       );
-  }
-
-  isCurrentTerm(term: string) {
-    console.log(this.term === term ? true : false);
-    return this.term === term ? true : false;
   }
 
   switchTerm(term: string) {

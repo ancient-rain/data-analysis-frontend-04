@@ -13,6 +13,7 @@ export class Student {
         public minors: [string],
         public graduationDate: string,
         public courses: [Course],
-        public advisor: Faculty
+        public advisor: Faculty,
+        public terms: [string]
     ) { }
 }
