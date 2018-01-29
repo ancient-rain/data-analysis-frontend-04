@@ -1,16 +1,3 @@
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatDialogModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatRippleModule,
-  MatSnackBarModule,
-  MatToolbarModule,
-} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,21 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { EmitterService } from './services/emitter.service';
 import { StudentModule } from './student/student.module';
-
-export const MaterialModules = [
-  MatButtonModule,
-  MatCardModule,
-  MatDialogModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatRippleModule,
-  MatSnackBarModule,
-  MatToolbarModule,
-];
-
+import { AppMaterialModule } from './app-material.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +16,7 @@ export const MaterialModules = [
   ],
   imports: [
     BrowserModule,
-    MaterialModules,
+    AppMaterialModule,
     FlexLayoutModule,
     HttpClientModule,
     AppRoutingModule,

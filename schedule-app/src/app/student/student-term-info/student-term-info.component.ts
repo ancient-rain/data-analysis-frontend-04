@@ -20,6 +20,7 @@ export class StudentTermInfoComponent implements OnInit {
 
   constructor(private studentService: StudentService, private router: Router) {
     this.getHeaders();
+    /* will have to add information to get the list of the student's terms that they have been in */
     this.terms = ['201410', '201420', '201430', '201510', '201520', '201530',
       '201610', '201620', '201630', '201710', '201720', '201730'];
   }
