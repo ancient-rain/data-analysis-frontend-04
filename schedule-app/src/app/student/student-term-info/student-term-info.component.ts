@@ -44,6 +44,7 @@ export class StudentTermInfoComponent implements OnInit {
         this.student[0].majors.pop();
         this.student[0].minors.pop();
         const curTerms = [];
+        console.log(student);
 
         for (let i = 0; i < this.student[0].terms.length; i++) {
           const term = this.student[0].terms[i].term;

@@ -5,6 +5,6 @@
     <p>Major: {{student.majors}}</p>
     <p *ngIf="student.minors.length > 0">Minor: {{student.minors}}</p>
     <p>Year: Y{{student.year}}</p>
-    <p>Adviser: <a href="">{{student.advisor[0].username}}</a></p>
+    <p *ngIf="student.advisor.length > 0">Adviser: <a href="">{{student.advisor[0].username}}</a></p>
   </mat-card-content>
 </mat-card>
