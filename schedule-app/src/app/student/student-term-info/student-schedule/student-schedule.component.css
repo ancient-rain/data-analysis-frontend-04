@@ -1,0 +1,13 @@
+.times {
+    background-color: #dee2e6;
+}
+
+.day {
+    background-color: #dee2e6;
+}
+
+.table thead th {
+    vertical-align: middle;
+    text-align: center;
+    width: 300px;
+}
