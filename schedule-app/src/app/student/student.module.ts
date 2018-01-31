@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StudentTermInfoComponent } from './index.js';
-import { StudentInfoComponent } from './index.js';
-import { StudentCourseInfoComponent } from './index.js';
-import { StudentScheduleComponent } from './index.js';
+import { StudentTermInfoComponent } from './index';
+import { StudentInfoComponent } from './index';
+import { StudentCourseInfoComponent } from './index';
+import { StudentScheduleComponent } from './index';
 import { StudentService } from '../services/student.service';
 import { AppMaterialModule } from '../app-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
