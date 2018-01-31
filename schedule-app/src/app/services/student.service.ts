@@ -6,12 +6,12 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class StudentService {
-  private domainUrl = 'http://localhost:3000/';
+  private domainUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
   getStudentTermInfo(username: String, term: String): Observable<Student> {
-    const url = this.domainUrl + `student/${username}/${term}`;
+    const url = `${this.domainUrl}/student/${username}/${term}`;
     return this.http.get<Student>(url)
       .catch((error: any) =>
         Observable.throw(error.json().error || 'Server error'));

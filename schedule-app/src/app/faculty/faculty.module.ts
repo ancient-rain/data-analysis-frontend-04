@@ -9,6 +9,7 @@ import { FactultyInfoComponent } from './index.js';
 import { FactultyScheduleComponent } from './index.js';
 import { FactultyTermInfoComponent } from './index.js';
 import { FacultyService } from '../services/faculty.service';
+import { FilterDataService } from '../services/filter-data.service';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { FacultyService } from '../services/faculty.service';
         FactultyTermInfoComponent
     ],
     providers: [
-        FacultyService
+        FacultyService,
+        FilterDataService
     ],
     exports: [
         FactultyAdviseesComponent,
