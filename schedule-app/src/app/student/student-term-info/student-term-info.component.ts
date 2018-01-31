@@ -41,7 +41,7 @@ export class StudentTermInfoComponent implements OnInit {
     this.studentService.getStudentTermInfo(this.username, this.term)
       .subscribe(student => {
         this.student = student;
-        this.terms = student.terms;
+        this.terms = student[0].terms;
 
         for (let i = 0; i < this.student[0].courses.length; i++) {
           const course = this.student[0].courses[i];
