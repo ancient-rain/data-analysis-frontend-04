@@ -36,6 +36,7 @@ export class FilterDataService {
     }
 
     filterClass(courseTime: string, times: string[]) {
+        let time = '';
         for (let i = 0; i < times.length; i = i + 2) {
             const days = times[i];
             const hours = times[i + 1].split('-');
@@ -45,12 +46,13 @@ export class FilterDataService {
             if (days.length <= 1) {
                 const isFinal = this.isFinal(start, end);
                 if (!isFinal) {
-                    return this.getFilteredClass(days, start, end);
+                    time += this.getFilteredClass(days, start, end);
                 }
+            } else {
+                time += this.getFilteredClass(days, start, end);
             }
-
-            return this.getFilteredClass(days, start, end);
         }
+        return time;
     }
 
     getFilteredClass(days: string, start: number, end: number) {
@@ -67,6 +69,8 @@ export class FilterDataService {
                     hoursStr += `-${i}`;
                 }
                 break;
+            } else if (isStarted && i + 1 >= this.hours.length) {
+                hoursStr += `-${i + 1}`;
             }
         }
 
