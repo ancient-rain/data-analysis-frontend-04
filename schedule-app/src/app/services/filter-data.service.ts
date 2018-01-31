@@ -102,12 +102,13 @@ export class FilterDataService {
             let isStarted = false;
 
             for (let j = 0; j < this.hours.length; j++) {
-                if (start <= this.hours[j] && !isStarted) {
-                    schedule.set(`${day}-${this.hours[j]}`, `${name}`);
+                const curHour = this.hours[j];
+                if (start <= curHour && !isStarted) {
+                    schedule.set(`${day}-${curHour}`, `${name}`);
                     isStarted = true;
-                } else if (end >= this.hours[j] && isStarted) {
-                    schedule.set(`${day}-${this.hours[j]}`, `${name}`);
-                } else if (end <= this.hours[j] && isStarted) {
+                } else if (end >= curHour && isStarted) {
+                    schedule.set(`${day}-${curHour}`, `${name}`);
+                } else if (end <= curHour && isStarted) {
                     break;
                 }
             }

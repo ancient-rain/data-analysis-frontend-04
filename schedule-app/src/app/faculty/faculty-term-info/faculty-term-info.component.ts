@@ -9,11 +9,11 @@ import { EmitterService } from '../../services/emitter.service';
 import { FilterDataService } from '../../services/filter-data.service';
 
 @Component({
-  selector: 'app-factulty-term-info',
-  templateUrl: './factulty-term-info.component.html',
-  styleUrls: ['./factulty-term-info.component.css']
+  selector: 'app-faculty-term-info',
+  templateUrl: './faculty-term-info.component.html',
+  styleUrls: ['./faculty-term-info.component.css']
 })
-export class FactultyTermInfoComponent implements OnInit {
+export class FacultyTermInfoComponent implements OnInit {
   faculty: Faculty;
   username: string;
   term: string;
@@ -59,6 +59,11 @@ export class FactultyTermInfoComponent implements OnInit {
       const classTime = this.filterService.getClassTime(course);
       course.filteredTimes = classTime;
     }
+  }
+
+  switchTerm(term: string) {
+    this.router.navigate(['faculty', this.username, term]);
+    document.location.reload(true);
   }
 
   ngOnInit() {

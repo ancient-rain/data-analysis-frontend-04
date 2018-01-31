@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { AppMaterialModule } from '../app-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from '../app-routing.module';
-import { FactultyAdviseesComponent } from './index.js';
-import { FactultyCourseInfoComponent } from './index.js';
-import { FactultyInfoComponent } from './index.js';
-import { FactultyScheduleComponent } from './index.js';
-import { FactultyTermInfoComponent } from './index.js';
+import { FacultyAdviseesComponent } from './index.js';
+import { FacultyCourseInfoComponent } from './index.js';
+import { FacultyInfoComponent } from './index.js';
+import { FacultyScheduleComponent } from './index.js';
+import { FacultyTermInfoComponent } from './index.js';
 import { FacultyService } from '../services/faculty.service';
 import { FilterDataService } from '../services/filter-data.service';
 
@@ -19,22 +19,22 @@ import { FilterDataService } from '../services/filter-data.service';
         AppRoutingModule
     ],
     declarations: [
-        FactultyAdviseesComponent,
-        FactultyCourseInfoComponent,
-        FactultyInfoComponent,
-        FactultyScheduleComponent,
-        FactultyTermInfoComponent
+        FacultyAdviseesComponent,
+        FacultyCourseInfoComponent,
+        FacultyInfoComponent,
+        FacultyScheduleComponent,
+        FacultyTermInfoComponent
     ],
     providers: [
         FacultyService,
         FilterDataService
     ],
     exports: [
-        FactultyAdviseesComponent,
-        FactultyCourseInfoComponent,
-        FactultyInfoComponent,
-        FactultyScheduleComponent,
-        FactultyTermInfoComponent
+        FacultyAdviseesComponent,
+        FacultyCourseInfoComponent,
+        FacultyInfoComponent,
+        FacultyScheduleComponent,
+        FacultyTermInfoComponent
     ]
 })
 export class FacultyModule { }

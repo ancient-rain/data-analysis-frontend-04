@@ -1,0 +1,7 @@
+<mat-card>
+  <mat-card-title>{{faculty.name}}</mat-card-title>
+  <mat-card-content>
+    <p>Username: {{faculty.username}}</p>
+    <p *ngIf="faculty.dept != ''">Dept: {{faculty.advisor}}</p>
+  </mat-card-content>
+</mat-card>
