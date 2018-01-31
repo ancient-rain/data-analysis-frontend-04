@@ -1,3 +1,23 @@
-<p>
-  factulty-advisees works!
-</p>
+<mat-card>
+  <mat-card-title>Advisees</mat-card-title>
+  <mat-card-content>
+    <table class="table">
+      <tr class="headers">
+        <th>Username</th>
+        <th>Name</th>
+        <th>Major</th>
+        <th>Year</th>
+        <th>Email</th>
+      </tr>
+      <tr *ngFor="let advisee of faculty.advisees">
+        <th>
+          <a (click)="openStudentTermInfo(advisee);">{{advisee.username}}</a>
+        </th>
+        <th>{{advisee.name}}</th>
+        <th>{{advisee.majors}}</th>
+        <th>Y{{advisee.year}}</th>
+        <th>{{advisee.username}}@rose-hulman.edu</th>
+      </tr>
+    </table>
+  </mat-card-content>
+</mat-card>

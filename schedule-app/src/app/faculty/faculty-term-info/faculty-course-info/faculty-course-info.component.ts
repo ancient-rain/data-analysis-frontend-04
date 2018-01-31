@@ -22,7 +22,4 @@ export class FacultyCourseInfoComponent  {
     this.router.navigate(['faculty', faculty.username]);
   }
 
-  openStudentTermInfo(student: Student) {
-    this.router.navigate(['student', student.username, student.term]);
-  }
 }
