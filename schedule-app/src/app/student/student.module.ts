@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StudentTermInfoComponent } from './student-term-info/student-term-info.component';
+import { StudentTermInfoComponent } from './index.js';
+import { StudentInfoComponent } from './index.js';
+import { StudentCourseInfoComponent } from './index.js';
+import { StudentScheduleComponent } from './index.js';
 import { StudentService } from '../services/student.service';
-import { StudentInfoComponent } from './student-term-info/student-info/student-info.component';
-import { StudentCourseInfoComponent } from './student-term-info/student-course-info/student-course-info.component';
-import { StudentScheduleComponent } from './student-term-info/student-schedule/student-schedule.component';
 import { AppMaterialModule } from '../app-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from '../app-routing.module';
