@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { EmitterService } from './services/emitter.service';
 import { StudentModule } from './student/student.module';
 import { AppMaterialModule } from './app-material.module';
+import { FacultyModule } from './faculty/faculty.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AppMaterialModule } from './app-material.module';
     FlexLayoutModule,
     HttpClientModule,
     AppRoutingModule,
-    StudentModule
+    StudentModule,
+    FacultyModule
   ],
   providers: [
     EmitterService

@@ -12,7 +12,7 @@ import { AppRoutingModule } from '../app-routing.module';
 @NgModule({
   imports: [
     CommonModule,
-    AppMaterialModule, /* material html won't work without importing in this module */
+    AppMaterialModule,
     FlexLayoutModule,
     AppRoutingModule
   ],
