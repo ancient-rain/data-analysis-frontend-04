@@ -1,44 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
-//import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatDialogModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatRippleModule,
-  MatSnackBarModule,
-  MatToolbarModule,
-
-} from '@angular/material';
+import { EmitterService } from './services/emitter.service';
+import { StudentModule } from './student/student.module';
+import { AppMaterialModule } from './app-material.module';
 import { CourseInformationComponent } from './course-information/course-information.component';
-
-
-
-export const MaterialModules = [
-  MatButtonModule,
-  MatCardModule,
-  MatDialogModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatRippleModule,
-  MatSnackBarModule,
-  MatToolbarModule,
-];
-
 
 @NgModule({
   declarations: [
@@ -47,10 +19,15 @@ export const MaterialModules = [
   ],
   imports: [
     BrowserModule,
-    MaterialModules,
-    FlexLayoutModule
+    AppMaterialModule,
+    FlexLayoutModule,
+    HttpClientModule,
+    AppRoutingModule,
+    StudentModule
   ],
-  providers: [],
+  providers: [
+    EmitterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

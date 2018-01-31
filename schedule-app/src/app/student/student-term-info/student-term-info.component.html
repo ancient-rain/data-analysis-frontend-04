@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="terms" fxLayout="row" fxLayoutAlign="space-around center">
+        <div *ngFor="let term of terms">
+          <button mat-raised-button *ngIf="term === student.term; else normalButton">{{term}}</button>
+          <ng-template #normalButton>
+            <button mat-button (click)="switchTerm(term);">{{term}}</button>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <app-student-info [student]="student"></app-student-info>
+    </div>
+    <div class="col-md-9">
+      <app-student-course-info [student]="student"></app-student-course-info>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-student-schedule [student]="student" [days]="days" [hours]="hours" [schedule]="schedule"></app-student-schedule>
+    </div>
+  </div>
+</div>
