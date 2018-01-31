@@ -70,7 +70,9 @@ export class FilterDataService {
             }
         }
 
-        return `${days}/${hoursStr}`;
+        const classStr = `${days}/${hoursStr}`;
+
+        return classStr === '/' ? 'TBA' : classStr;
     }
 
     updateSchedule(schedule: Map<string, string>, courses: Course[]) {

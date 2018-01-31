@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Student } from '../../../models/student';
 import { Course } from '../../../models/course';
 import { Router } from '@angular/router';
@@ -8,20 +8,17 @@ import { Router } from '@angular/router';
   templateUrl: './student-course-info.component.html',
   styleUrls: ['./student-course-info.component.css']
 })
-export class StudentCourseInfoComponent implements OnInit {
+export class StudentCourseInfoComponent {
   @Input() student: Student;
 
   constructor(private router: Router) { }
 
-  openCourseInfo(course: Course) {
+  openCourseTermInfo(course: Course) {
     this.router.navigate(['course', course.name, course.term, 'students']);
   }
 
-  openFacultyInfo(course: Course) {
+  openFacultyTermInfo(course: Course) {
     this.router.navigate(['faculty', course.instructor, course.term]);
-  }
-
-  ngOnInit() {
   }
 
 }

@@ -11,11 +11,11 @@
         </tr>
         <tr *ngFor="let course of student.courses">
           <th>
-            <a (click)="openCourseInfo(course);">{{course.name}}</a>
+            <a (click)="openCourseTermInfo(course);">{{course.name}}</a>
           </th>
           <th>{{course.description}}</th>
           <th>
-            <a (click)="openFacultyInfo(course);">{{course.instructor}}</a>
+            <a (click)="openFacultyTermInfo(course);">{{course.instructor}}</a>
           </th>
           <th>{{course.creditHours}}</th>
           <th>{{course.filteredTimes}}</th>
