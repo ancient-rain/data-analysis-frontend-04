@@ -22,7 +22,8 @@ import { FacultyModule } from './faculty/faculty.module';
     HttpClientModule,
     AppRoutingModule,
     StudentModule,
-    FacultyModule
+    FacultyModule,
+    BrowserAnimationsModule
   ],
   providers: [
     EmitterService

@@ -10,13 +10,15 @@ import { FacultyScheduleComponent } from './index.js';
 import { FacultyTermInfoComponent } from './index.js';
 import { FacultyService } from '../services/faculty.service';
 import { FilterDataService } from '../services/filter-data.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     imports: [
         CommonModule,
         AppMaterialModule,
         FlexLayoutModule,
-        AppRoutingModule
+        AppRoutingModule,
+        BrowserAnimationsModule
     ],
     declarations: [
         FacultyAdviseesComponent,
