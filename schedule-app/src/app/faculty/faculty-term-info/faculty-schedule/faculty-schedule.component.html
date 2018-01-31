@@ -1,3 +1,27 @@
-<p>
-  factulty-schedule works!
-</p>
+<mat-card>
+  <mat-card-content>
+    <table class="table">
+      <thead>
+        <tr class="times">
+          <th>Term Grid</th>
+          <th>1<br>8:05</th>
+          <th>2<br>9:00</th>
+          <th>3<br>9:55</th>
+          <th>4<br>10:50</th>
+          <th>5<br>11:45</th>
+          <th>6<br>12:40</th>
+          <th>7<br>1:35</th>
+          <th>8<br>2:30</th>
+          <th>9<br>3:25</th>
+          <th>10<br>4:20</th>
+        </tr>
+        <tr *ngFor="let day of days">
+          <th class="day">{{day}}</th>
+          <th *ngFor="let hour of hours">
+            <span *ngIf="getValue(day, hour);">{{curVal}}</span>
+          </th>
+        </tr>
+      </thead>
+    </table>
+  </mat-card-content>
+</mat-card>
