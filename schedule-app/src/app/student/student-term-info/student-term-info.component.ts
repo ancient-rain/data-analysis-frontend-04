@@ -41,16 +41,7 @@ export class StudentTermInfoComponent implements OnInit {
     this.studentService.getStudentTermInfo(this.username, this.term)
       .subscribe(student => {
         this.student = student;
-        this.student[0].majors.pop();
-        this.student[0].minors.pop();
-        const curTerms = [];
-        console.log(student);
-
-        for (let i = 0; i < this.student[0].terms.length; i++) {
-          const term = this.student[0].terms[i].term;
-          curTerms.push(term);
-        }
-        this.terms = curTerms;
+        this.terms = student.terms;
 
         for (let i = 0; i < this.student[0].courses.length; i++) {
           const course = this.student[0].courses[i];
