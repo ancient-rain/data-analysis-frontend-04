@@ -68,9 +68,12 @@ export class FilterDataService {
                 if (hoursStr !== `${i}`) {
                     hoursStr += `-${i}`;
                 }
+                hoursStr += ' ';
                 break;
             } else if (isStarted && i + 1 >= this.hours.length) {
                 hoursStr += `-${i + 1}`;
+                hoursStr += ' ';
+                break;
             }
         }
 
