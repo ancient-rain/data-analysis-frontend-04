@@ -10,6 +10,7 @@ import { EmitterService } from './services/emitter.service';
 import { StudentModule } from './student/student.module';
 import { AppMaterialModule } from './app-material.module';
 import { FacultyModule } from './faculty/faculty.module';
+import { BadRequestModule } from './bad-request/bad-request.module';
 
 @NgModule({
   declarations: [
@@ -18,12 +19,13 @@ import { FacultyModule } from './faculty/faculty.module';
   imports: [
     BrowserModule,
     AppMaterialModule,
+    BrowserAnimationsModule,
     FlexLayoutModule,
     HttpClientModule,
     AppRoutingModule,
     StudentModule,
     FacultyModule,
-    BrowserAnimationsModule
+    BadRequestModule
   ],
   providers: [
     EmitterService

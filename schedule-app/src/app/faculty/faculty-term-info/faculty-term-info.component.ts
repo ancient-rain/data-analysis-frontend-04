@@ -49,8 +49,11 @@ export class FacultyTermInfoComponent implements OnInit {
 
         this.filterClasses(data);
         this.filterService.updateSchedule(this.schedule, data.courses);
-        console.log(this.faculty);
-      });
+      },
+      err => {
+        this.router.navigate(['not-found']);
+      }
+    );
   }
 
   filterClasses(data: any) {

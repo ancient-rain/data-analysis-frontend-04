@@ -55,7 +55,7 @@ export class StudentTermInfoComponent implements OnInit {
         this.updateSchedule(this.student[0].courses);
       },
       err => {
-        console.log(err);
+        this.router.navigate(['not-found']);
       }
       );
   }
