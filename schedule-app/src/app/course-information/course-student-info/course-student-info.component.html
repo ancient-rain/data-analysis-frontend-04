@@ -1,0 +1,27 @@
+<mat-card class="container">
+    <mat-card-content>
+      <table class="table">
+        <thead>
+          <tr class="headers">
+            <th>Name</th>
+            <th>Username</th>
+            <th>Major</th>
+            <th>Year</th>
+            <th>Advisor</th>
+          </tr>
+          <tr *ngFor="let student of students">
+            <th>{{student.name}}</th>
+            <th>
+              <a (click)="openStudentInfo(student);">{{student.username}}</a>
+            </th>
+            <th>{{student.majors}}</th>
+            <th>{{student.year}}</th>
+            <th>
+                <a (click)="openFacultyInfo(student.advisor);">{{student.advisor}}</a>
+              </th>          
+            </tr>
+        </thead>
+      </table>
+    </mat-card-content>
+  </mat-card>
+  

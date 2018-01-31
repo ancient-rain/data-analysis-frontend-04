@@ -1,21 +1,28 @@
-<table style="width:100%">
-  <tr>
-    <th>Course</th>
-    <th>Description</th> 
-    <th>Instructor</th>
-    <th>Credit</th>
-    <th>Students</th>
-    <th>Term Schedule</th>
-
-  </tr>
-  <tr *ngFor="let course of courses">
-    <td>{{ course.name }}</td>
-    <td>{{ course.description }}</td>
-    <td>{{ course.instructor }}</td>
-    <td>{{ course.creditHours }}</td>
-    <td>{{ course.numStudents }}</td>
-    <td>{{ course.meetTimes }}</td>
-
-    <td>Show Detail</td>
-  </tr>
-</table>
+<mat-card class="container">
+  <mat-card-content>
+    <table class="table">
+      <thead>
+        <tr class="headers">
+          <th>Course</th>
+          <th>Description</th>
+          <th>Instructor</th>
+          <th>Credit</th>
+          <th>Students</th>
+          <th>Term Schedule</th>
+        </tr>
+        <tr *ngFor="let course of courses">
+          <th>
+            <a (click)="openCourseInfo(course);">{{course.name}}</a>
+          </th>
+          <th>{{course.description}}</th>
+          <th>
+            <a (click)="openFacultyInfo(course);">{{course.instructor}}</a>
+          </th>
+          <th>{{course.creditHours}}</th>
+          <th>{{course.students.length}}</th>
+          <th>{{course.filteredTimes}}</th>
+        </tr>
+      </thead>
+    </table>
+  </mat-card-content>
+</mat-card>

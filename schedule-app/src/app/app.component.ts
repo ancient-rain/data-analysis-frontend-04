@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import 'rosefire-node';
+//import 'rosefire-node';
 
 @Component({
   selector: 'app-root',

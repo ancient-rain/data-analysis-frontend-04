@@ -10,12 +10,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { EmitterService } from './services/emitter.service';
 import { StudentModule } from './student/student.module';
 import { AppMaterialModule } from './app-material.module';
-import { CourseInformationComponent } from './course-information/course-information.component';
+import { CourseModule } from './course-information/course.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CourseInformationComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +22,8 @@ import { CourseInformationComponent } from './course-information/course-informat
     FlexLayoutModule,
     HttpClientModule,
     AppRoutingModule,
-    StudentModule
+    StudentModule,
+    CourseModule
   ],
   providers: [
     EmitterService

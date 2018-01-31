@@ -1,32 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Course } from '../models/course';
-import { CourseService } from '../services/course.service';
+import { Course } from '../../models/course';
+import { CourseService } from '../../services/course.service';
+import { Faculty } from '../../models/faculty';
 
 
 @Component({
-  selector: 'app-course-information',
-  templateUrl: './course-information.component.html',
-  styleUrls: ['./course-information.component.css']
+  selector: 'app-single-course-info',
+  templateUrl: './single-course-info.component.html',
+  styleUrls: ['./single-course-info.component.css']
 })
-export class CourseInformationComponent implements OnInit {
+export class SingleCourseInfoComponent implements OnInit {
 
   private coursesUrl = '/courses/:name/:term';
   name: string;
   term: string;
-  courses: Course[];
+  course: Course;
   schedule: Map<string, string> = new Map<string, string>();
   days: [string];
   hours: [number];
   finalLength: number;
+  faculty: Faculty;
 
   constructor(private courseService: CourseService) {
     this.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     this.hours = [805, 900, 955, 1050, 1145, 1240, 1335, 1430, 1525, 1620];
     this.finalLength = 400;
     this.getHeaders();
-   }
+  }
 
   getHeaders() {
     const url = window.location.href;
@@ -35,23 +37,22 @@ export class CourseInformationComponent implements OnInit {
     this.term = params[params.length - 1];
   }
 
-  loadCourses() {
-    this.courseService.getCoursesTermInfo(this.name, this.term)
-    .subscribe(courses => {
-      this.courses = courses;
-      console.log(this.courses);
-
-      for (let i = 0; i < this.courses.length; i++) {
-        const course = this.courses[i];
-        let courseTime = course.meetTimes;
+  loadCourse() {
+    this.courseService.getSingleCourseTermInfo(this.name, this.term)
+      .subscribe(retCourse => {
+        this.course = retCourse[0];
+        console.log(this.course);
+        this.faculty = this.course.advisor[0];
+        console.log(this.faculty);
+        let courseTime = this.course.meetTimes;
         courseTime = courseTime.replace(/  /g, ' ');
         const times = courseTime.split(' ');
         const classTime = this.filterClass(courseTime, times);
-        course.filteredTimes = classTime;
-    },
-  err => {
-    console.log(err);
-  });
+        this.course.filteredTimes = classTime;
+      },
+      err => {
+        console.log(err);
+      });
   }
 
   filterClass(courseTime: string, times: string[]) {
@@ -95,7 +96,7 @@ export class CourseInformationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadCourses();
+    this.loadCourse();
   }
 
 }
