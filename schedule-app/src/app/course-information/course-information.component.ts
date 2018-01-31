@@ -48,7 +48,7 @@ export class CourseInformationComponent implements OnInit {
         const times = courseTime.split(' ');
         const classTime = this.filterClass(courseTime, times);
         course.filteredTimes = classTime;
-    },
+    }},
   err => {
     console.log(err);
   });
