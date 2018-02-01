@@ -12,7 +12,20 @@ import {
   MatRippleModule,
   MatSnackBarModule,
   MatToolbarModule,
-  MatLineModule
+  MatLineModule,
+  MatButtonToggleModule,
+  MatFormFieldModule,
+  MatSidenavModule,
+  MatSelectModule,
+  MatTabsModule,
+  MatCheckboxModule,
+  MatAutocompleteModule,
+  MatDatepickerModule,
+  MatRadioModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatProgressBarModule,
+  MatExpansionModule
 } from '@angular/material';
 
 @NgModule({
@@ -28,7 +41,20 @@ import {
     MatRippleModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatLineModule
+    MatLineModule,
+    MatButtonToggleModule,
+    MatFormFieldModule,
+    MatSidenavModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatRadioModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatProgressBarModule,
+    MatExpansionModule
   ],
   exports: [
     MatButtonModule,
@@ -42,7 +68,20 @@ import {
     MatRippleModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatLineModule
+    MatLineModule,
+    MatButtonToggleModule,
+    MatFormFieldModule,
+    MatSidenavModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatRadioModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatProgressBarModule,
+    MatExpansionModule
   ],
   declarations: []
 })

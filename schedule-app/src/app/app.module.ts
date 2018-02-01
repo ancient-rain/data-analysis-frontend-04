@@ -11,6 +11,9 @@ import { EmitterService } from './services/emitter.service';
 import { StudentModule } from './student/student.module';
 import { AppMaterialModule } from './app-material.module';
 import { CourseModule } from './course-information/course.module';
+import { FacultyModule } from './faculty/faculty.module';
+import { BadRequestModule } from './bad-request/bad-request.module';
+>>>>>>> schedule-app/src/app/app.module.ts
 
 @NgModule({
   declarations: [
@@ -19,11 +22,14 @@ import { CourseModule } from './course-information/course.module';
   imports: [
     BrowserModule,
     AppMaterialModule,
+    BrowserAnimationsModule,
     FlexLayoutModule,
     HttpClientModule,
     AppRoutingModule,
     StudentModule,
     CourseModule
+    FacultyModule,
+    BadRequestModule
   ],
   providers: [
     EmitterService
