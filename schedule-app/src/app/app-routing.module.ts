@@ -8,10 +8,11 @@ import { BadRequestComponent } from './bad-request/bad-request.component';
 
 const routes: Routes = [
     { path: 'not-found', pathMatch: 'full', component: BadRequestComponent},
+    { path: 'course/:name/:term', pathMatch: 'full', component: SingleCourseInfoComponent },
+    { path: 'courses/:name/:term', pathMatch: 'full', component: CourseInformationComponent },
+    { path: 'faculty/:username/:term', pathMatch: 'full', component: FacultyTermInfoComponent },
     { path: 'student/:username/:term', pathMatch: 'full', component: StudentTermInfoComponent },
-    { path: 'student/:username/:term', pathMatch: 'full', component: StudentTermInfoComponent },
-    { path: 'course/:name/:term', pathMatch: 'full', component: SingleCourseInfoComponent},
-    { path: 'courses/:name/:term', pathMatch: 'full', component: CourseInformationComponent},
+    { path: 'student/:username/:term', pathMatch: 'full', component: StudentTermInfoComponent }
 ];
 
 @NgModule({

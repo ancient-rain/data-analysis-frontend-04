@@ -14,7 +14,7 @@ export class StudentCourseInfoComponent {
   constructor(private router: Router) { }
 
   openCourseTermInfo(course: Course) {
-    this.router.navigate(['course', course.name, course.term, 'students']);
+    this.router.navigate(['course', course.name, course.term]);
   }
 
   openFacultyTermInfo(course: Course) {
