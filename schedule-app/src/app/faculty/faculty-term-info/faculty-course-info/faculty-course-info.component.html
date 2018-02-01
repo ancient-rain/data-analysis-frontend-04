@@ -9,13 +9,13 @@
           <th>Credit</th>
           <th>Term Schedule</th>
         </tr>
-        <tr *ngFor="let course of student.courses">
+        <tr *ngFor="let course of faculty.courses">
           <th>
             <a (click)="openCourseTermInfo(course);">{{course.name}}</a>
           </th>
           <th>{{course.description}}</th>
           <th>
-            <a (click)="openFacultyTermInfo(course);">{{course.instructor}}</a>
+            {{faculty.username}}
           </th>
           <th>{{course.creditHours}}</th>
           <th>{{course.filteredTimes}}</th>

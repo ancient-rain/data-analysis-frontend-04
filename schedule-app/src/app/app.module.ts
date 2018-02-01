@@ -9,6 +9,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { EmitterService } from './services/emitter.service';
 import { StudentModule } from './student/student.module';
 import { AppMaterialModule } from './app-material.module';
+import { FacultyModule } from './faculty/faculty.module';
+import { BadRequestModule } from './bad-request/bad-request.module';
 
 @NgModule({
   declarations: [
@@ -17,10 +19,13 @@ import { AppMaterialModule } from './app-material.module';
   imports: [
     BrowserModule,
     AppMaterialModule,
+    BrowserAnimationsModule,
     FlexLayoutModule,
     HttpClientModule,
     AppRoutingModule,
-    StudentModule
+    StudentModule,
+    FacultyModule,
+    BadRequestModule
   ],
   providers: [
     EmitterService

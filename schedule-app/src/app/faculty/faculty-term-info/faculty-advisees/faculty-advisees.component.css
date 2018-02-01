@@ -1,0 +1,15 @@
+tr.headers {
+  background-color: #dee2e6;
+}
+
+.mat-expansion-panel-header-title {
+  font-size: 20px;
+}
+
+.mat-expansion-panel-header-description {
+  font-size: 20px;
+}
+
+.mat-expansion-panel-header {
+  padding: 24px;
+}

@@ -2,20 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
-import { Student } from '../../models/student';
-import { StudentService } from '../../services/student.service';
+import { Faculty } from '../../models/faculty';
+import { Course } from '../../models/course';
+import { FacultyService } from '../../services/faculty.service';
 import { EmitterService } from '../../services/emitter.service';
 import { FilterDataService } from '../../services/filter-data.service';
-import { Course } from '../../models/course';
 
 @Component({
-  selector: 'app-student-term-info',
-  templateUrl: './student-term-info.component.html',
-  styleUrls: ['./student-term-info.component.css']
+  selector: 'app-faculty-term-info',
+  templateUrl: './faculty-term-info.component.html',
+  styleUrls: ['./faculty-term-info.component.css']
 })
-export class StudentTermInfoComponent implements OnInit {
-  private termId = 'SWITCH_TERM';
-  student: Student;
+export class FacultyTermInfoComponent implements OnInit {
+  faculty: Faculty;
   username: string;
   term: string;
   schedule: Map<string, string> = new Map<string, string>();
@@ -24,7 +23,7 @@ export class StudentTermInfoComponent implements OnInit {
   finalLength: number;
   terms;
 
-  constructor(private studentService: StudentService,
+  constructor(private facultyService: FacultyService,
     private filterService: FilterDataService,
     private router: Router) {
     this.days = this.filterService.getDays();
@@ -41,11 +40,11 @@ export class StudentTermInfoComponent implements OnInit {
   }
 
   loadStudent() {
-    this.studentService.getStudentTermInfo(this.username, this.term)
-      .subscribe(student => {
-        const data = student[0];
+    this.facultyService.getFacultyTermInfo(this.username, this.term)
+      .subscribe(faculty => {
+        const data = faculty[0];
 
-        this.student = student;
+        this.faculty = faculty;
         this.terms = data.terms;
 
         this.filterClasses(data);
@@ -54,7 +53,7 @@ export class StudentTermInfoComponent implements OnInit {
       err => {
         this.router.navigate(['not-found']);
       }
-      );
+    );
   }
 
   filterClasses(data: any) {
@@ -66,8 +65,7 @@ export class StudentTermInfoComponent implements OnInit {
   }
 
   switchTerm(term: string) {
-    this.router.navigate(['student', this.username, term]);
-    /* without refreshing it won't load new content, not sure why */
+    this.router.navigate(['faculty', this.username, term]);
     document.location.reload(true);
   }
 
