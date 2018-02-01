@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Faculty } from '../../models/faculty';
 import { Course } from '../../models/course';
@@ -17,7 +17,7 @@ export class FacultyTermInfoComponent implements OnInit {
   faculty: Faculty;
   username: string;
   term: string;
-  schedule: Map<string, string> = new Map<string, string>();
+  schedule: Map<string, string>;
   days: [string];
   hours: [number];
   finalLength: number;
@@ -25,18 +25,11 @@ export class FacultyTermInfoComponent implements OnInit {
 
   constructor(private facultyService: FacultyService,
     private filterService: FilterDataService,
-    private router: Router) {
+    private router: Router,
+    private route: ActivatedRoute) {
     this.days = this.filterService.getDays();
     this.hours = this.filterService.getHours();
     this.finalLength = this.filterService.getFinalLength();
-    this.getHeaders();
-  }
-
-  getHeaders() {
-    const url = window.location.href;
-    const params = url.split('/');
-    this.username = params[params.length - 2];
-    this.term = params[params.length - 1];
   }
 
   loadStudent() {
@@ -46,6 +39,7 @@ export class FacultyTermInfoComponent implements OnInit {
 
         this.faculty = faculty;
         this.terms = data.terms;
+        this.schedule = new Map<string, string>();
 
         this.filterClasses(data);
         this.filterService.updateSchedule(this.schedule, data.courses);
@@ -53,7 +47,7 @@ export class FacultyTermInfoComponent implements OnInit {
       err => {
         this.router.navigate(['not-found']);
       }
-    );
+      );
   }
 
   filterClasses(data: any) {
@@ -64,13 +58,12 @@ export class FacultyTermInfoComponent implements OnInit {
     }
   }
 
-  switchTerm(term: string) {
-    this.router.navigate(['faculty', this.username, term]);
-    document.location.reload(true);
-  }
-
   ngOnInit() {
-    this.loadStudent();
+    this.route.params.subscribe(params => {
+      this.username = params['username'];
+      this.term = params['term'];
+      this.loadStudent();
+    });
   }
 
 }
