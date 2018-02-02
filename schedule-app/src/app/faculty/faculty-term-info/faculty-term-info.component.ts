@@ -46,8 +46,7 @@ export class FacultyTermInfoComponent implements OnInit {
       },
       err => {
         this.router.navigate(['not-found']);
-      }
-      );
+      });
   }
 
   filterClasses(data: any) {

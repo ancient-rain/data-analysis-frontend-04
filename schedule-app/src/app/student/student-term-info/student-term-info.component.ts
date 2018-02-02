@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Student } from '../../models/student';
 import { StudentService } from '../../services/student.service';
@@ -18,7 +18,7 @@ export class StudentTermInfoComponent implements OnInit {
   student: Student;
   username: string;
   term: string;
-  schedule: Map<string, string> = new Map<string, string>();
+  schedule: Map<string, string>;
   days: [string];
   hours: [number];
   finalLength: number;
@@ -26,18 +26,11 @@ export class StudentTermInfoComponent implements OnInit {
 
   constructor(private studentService: StudentService,
     private filterService: FilterDataService,
-    private router: Router) {
+    private router: Router,
+    private route: ActivatedRoute) {
     this.days = this.filterService.getDays();
     this.hours = this.filterService.getHours();
     this.finalLength = this.filterService.getFinalLength();
-    this.getHeaders();
-  }
-
-  getHeaders() {
-    const url = window.location.href;
-    const params = url.split('/');
-    this.username = params[params.length - 2];
-    this.term = params[params.length - 1];
   }
 
   loadStudent() {
@@ -47,14 +40,14 @@ export class StudentTermInfoComponent implements OnInit {
 
         this.student = student;
         this.terms = data.terms;
+        this.schedule = new Map<string, string>();
 
         this.filterClasses(data);
         this.filterService.updateSchedule(this.schedule, data.courses);
       },
       err => {
         this.router.navigate(['not-found']);
-      }
-      );
+      });
   }
 
   filterClasses(data: any) {
@@ -65,14 +58,12 @@ export class StudentTermInfoComponent implements OnInit {
     }
   }
 
-  switchTerm(term: string) {
-    this.router.navigate(['student', this.username, term]);
-    /* without refreshing it won't load new content, not sure why */
-    document.location.reload(true);
-  }
-
   ngOnInit() {
-    this.loadStudent();
+    this.route.params.subscribe(params => {
+      this.username = params['username'];
+      this.term = params['term'];
+      this.loadStudent();
+    });
   }
 
 }

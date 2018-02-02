@@ -5,7 +5,7 @@
         <div *ngFor="let term of terms">
           <button mat-raised-button *ngIf="term === student.term; else normalButton">{{term}}</button>
           <ng-template #normalButton>
-            <button mat-button (click)="switchTerm(term);">{{term}}</button>
+            <button mat-button [routerLink]="['/student', student.username, term]">{{term}}</button>
           </ng-template>
         </div>
       </div>

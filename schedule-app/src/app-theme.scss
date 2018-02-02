@@ -1,0 +1,7 @@
+@import '~@angular/material/themeing';
+@include mat-core();
+
+$app-primary: mat-pallete($mat-red, 900);
+$app-theme: mat-light-theme($app-primary);
+
+@include angular-material-theme($app-theme);
