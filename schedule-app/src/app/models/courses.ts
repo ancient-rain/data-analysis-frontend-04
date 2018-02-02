@@ -1,4 +1,6 @@
-export class Course {
+import { Faculty } from './faculty';
+
+export class Courses {
     constructor(
         public id: string,
         public type: string,
@@ -9,16 +11,7 @@ export class Course {
         public meetTimes: string,
         public instructor: string,
         public filteredTimes: string,
-        public students: {
-            id: string,
-            term: string,
-            username: string,
-            name: string,
-            year: string,
-            majors: string,
-            minors: string,
-            graduationDate: string,
-            advisor: string
-        }
+        public students: string,
+        public advisor: Faculty
     ) { }
 }

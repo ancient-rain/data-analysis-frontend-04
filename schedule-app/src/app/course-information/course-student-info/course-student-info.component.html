@@ -12,12 +12,12 @@
           <tr *ngFor="let student of students">
             <th>{{student.name}}</th>
             <th>
-              <a (click)="openStudentInfo(student);">{{student.username}}</a>
+              <a [routerLink]="['/student', student.username, student.term]">{{student.username}}</a>
             </th>
             <th>{{student.majors}}</th>
             <th>{{student.year}}</th>
             <th>
-                <a (click)="openFacultyInfo(student.advisor);">{{student.advisor}}</a>
+                <a [routerLink]="['/faculty', student.advisor, student.term]">{{student.advisor}}</a>
               </th>          
             </tr>
         </thead>

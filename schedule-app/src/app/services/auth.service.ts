@@ -34,16 +34,19 @@ export class AuthService {
       this.user.username = rfUser.username;
       this.isSignedIn = true;
 
+      localStorage.setItem('token', this.user.token);
+
       /* remove hardcoded term when route is available */
       this.router.navigate([
         `/${rfUser.group.toLowerCase()}`,
         rfUser.username,
-        '201630'
+        '201710'
       ]);
     });
   }
 
   signOut() {
+    localStorage.setItem('token', '');
     this.user = {
       email: '',
       group: '',

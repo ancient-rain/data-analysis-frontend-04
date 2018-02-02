@@ -54,10 +54,10 @@ const routes: Routes = [
         component: StudentTermInfoComponent,
         canActivate: [AuthGuard]
     },
-    {
-        path: '**',
-        redirectTo: 'signin'
-    }
+    // {
+    //     path: '**',
+    //     redirectTo: 'signin'
+    // }
 ];
 
 @NgModule({

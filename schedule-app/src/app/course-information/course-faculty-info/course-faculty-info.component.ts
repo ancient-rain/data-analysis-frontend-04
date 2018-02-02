@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Faculty } from '../../models/faculty';
+import { Course } from '../../models/course';
 
 @Component({
   selector: 'app-course-faculty-info',
@@ -7,7 +7,7 @@ import { Faculty } from '../../models/faculty';
   styleUrls: ['./course-faculty-info.component.css']
 })
 export class CourseFacultyInfoComponent implements OnInit {
-  @Input() faculty: Faculty;
+  @Input() course: Course;
 
 
   constructor() { }
