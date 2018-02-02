@@ -43,8 +43,6 @@ export class SingleCourseInfoComponent implements OnInit {
         data.filteredTimes = classTime;
         this.course = course;
         this.terms = data.terms;
-        console.log(this.terms);
-        console.log(this.course);
       },
       err => {
         this.router.navigate(['not-found']);
