@@ -1,16 +1,21 @@
 <mat-toolbar color="primary">
   Schedule Lookup
   <span fxFlex></span>
-  <button *ngIf="authService.isSignedIn" mat-button [routerLink]="['/student', authService.getUsername()]">
-    My Courses
-  </button>
-  <button *ngIf="!authService.isSignedIn; else logOut" mat-button (click)="authService.signIn()">
+  <button mat-button *ngIf="!authService.isSignedIn; else options" (click)="authService.signIn()">
     Login
   </button>
-  <ng-template #logOut>
-    <button mat-button (click)="authService.signOut()">
-      Log Out
+  <ng-template #options>
+    <button mat-button [matMenuTriggerFor]='menu'>
+      {{authService.getName()}} <mat-icon>settings</mat-icon>
     </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item [routerLink]="['/student', authService.getUsername()]">
+        My Courses
+      </button>
+      <button mat-menu-item (click)="authService.signOut()">
+        Log Out
+      </button>
+    </mat-menu>
   </ng-template>
 </mat-toolbar>
 <router-outlet></router-outlet>
