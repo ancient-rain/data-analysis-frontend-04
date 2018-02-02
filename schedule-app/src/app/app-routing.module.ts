@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
-import { StudentTermInfoComponent } from './student/student-term-info/student-term-info.component';
-import { CourseInformationComponent } from './course-information/course-information.component';
-import { SingleCourseInfoComponent } from './course-information/single-course-info/single-course-info.component';
-import { FacultyTermInfoComponent } from './faculty/index';
+import { AuthGuard } from './guards/auth.guard';
 import { BadRequestComponent } from './bad-request/bad-request.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { AuthGuard } from './guards/auth.guard';
+import { CourseInformationComponent } from './course-information/course-information.component';
+import { SingleCourseInfoComponent } from './course-information/single-course-info/single-course-info.component';
+import {
+    FacultyTermInfoComponent
+} from './faculty/index';
+import {
+    StudentInfoComponent,
+    StudentTermInfoComponent
+} from './student/index';
 
 const routes: Routes = [
     {
@@ -38,9 +43,9 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'student/:username/:term',
+        path: 'student/:username',
         pathMatch: 'full',
-        component: StudentTermInfoComponent,
+        component: StudentInfoComponent,
         canActivate: [AuthGuard]
     },
     {

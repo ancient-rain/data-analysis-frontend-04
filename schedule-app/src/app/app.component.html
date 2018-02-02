@@ -1,9 +1,16 @@
-<!doctype html>
 <mat-toolbar color="primary">
   Schedule Lookup
   <span fxFlex></span>
-  <button mat-button>
+  <button *ngIf="authService.isSignedIn" mat-button [routerLink]="['/student', authService.getUsername()]">
+    My Courses
+  </button>
+  <button *ngIf="!authService.isSignedIn; else logOut" mat-button (click)="authService.signIn()">
     Login
   </button>
+  <ng-template #logOut>
+    <button mat-button (click)="authService.signOut()">
+      Log Out
+    </button>
+  </ng-template>
 </mat-toolbar>
 <router-outlet></router-outlet>
