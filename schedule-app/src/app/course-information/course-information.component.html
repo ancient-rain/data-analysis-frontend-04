@@ -1,28 +1,45 @@
-<mat-card class="container">
-  <mat-card-content>
-    <table class="table">
-      <thead>
-        <tr class="headers">
-          <th>Course</th>
-          <th>Description</th>
-          <th>Instructor</th>
-          <th>Credit</th>
-          <th>Students</th>
-          <th>Term Schedule</th>
-        </tr>
-        <tr *ngFor="let course of courses">
-          <th>
-            <a (click)="openCourseInfo(course);">{{course.name}}</a>
-          </th>
-          <th>{{course.description}}</th>
-          <th>
-            <a (click)="openFacultyInfo(course);">{{course.instructor}}</a>
-          </th>
-          <th>{{course.creditHours}}</th>
-          <th>{{course.students.length}}</th>
-          <th>{{course.filteredTimes}}</th>
-        </tr>
-      </thead>
-    </table>
-  </mat-card-content>
-</mat-card>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="terms" fxLayout="row" fxLayoutAlign="space-around center">
+        <div *ngFor="let curTerm of terms">
+          <button mat-raised-button *ngIf="term === curTerm; else normalButton">{{term}}</button>
+          <ng-template #normalButton>
+            <button mat-button [routerLink]="['/courses', name, curTerm]">{{curTerm}}</button>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card class="container">
+        <mat-card-content>
+          <table class="table">
+            <thead>
+              <tr class="headers">
+                <th>Course</th>
+                <th>Description</th>
+                <th>Instructor</th>
+                <th>Credit</th>
+                <th>Students</th>
+                <th>Term Schedule</th>
+              </tr>
+              <tr *ngFor="let course of courses">
+                <th>
+                  <a [routerLink]="['/course', course.name, term]">{{course.name}}</a>
+                </th>
+                <th>{{course.description}}</th>
+                <th>
+                  <a [routerLink]="['/faculty', course.instructor, term]">{{course.instructor}}</a>
+                </th>
+                <th>{{course.creditHours}}</th>
+                <th>{{course.numStudents}}</th>
+                <th>{{course.filteredTimes}}</th>
+              </tr>
+            </thead>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
