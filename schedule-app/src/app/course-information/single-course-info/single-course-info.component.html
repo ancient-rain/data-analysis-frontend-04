@@ -1,14 +1,14 @@
 <div *ngFor="let course of course" class="container">
   <div class="row">
     <div class="col-md-12">
-      <!-- <div class="terms" fxLayout="row" fxLayoutAlign="space-around center">
+      <div class="terms" fxLayout="row" fxLayoutAlign="space-around center">
         <div *ngFor="let term of terms">
-          <button mat-raised-button *ngIf="term === faculty.term; else normalButton">{{term}}</button>
+          <button mat-raised-button *ngIf="term === course.term; else normalButton">{{term}}</button>
           <ng-template #normalButton>
-            <button mat-button [routerLink]="['/faculty', faculty.username, term]">{{term}}</button>
+            <button mat-button [routerLink]="['/course', course.name, term]">{{term}}</button>
           </ng-template>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
   <div class="row">
@@ -34,7 +34,7 @@
                 </th>
                 <th>{{course.description}}</th>
                 <th>
-                  <a [routerLink]="['/faculty', course.instructor, course.term]">{{course.instructor}}</a>
+                  <a [routerLink]="['/faculty', course.instructor.username, course.term]">{{course.instructor.username}}</a>
                 </th>
                 <th>{{course.creditHours}}</th>
                 <th>{{course.students.length}}</th>

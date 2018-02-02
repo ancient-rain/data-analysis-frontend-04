@@ -23,6 +23,7 @@ export class SingleCourseInfoComponent implements OnInit {
   days: [string];
   hours: [number];
   finalLength: number;
+  terms;
 
   constructor(private courseService: CourseService,
     private filterService: FilterDataService,
@@ -41,6 +42,8 @@ export class SingleCourseInfoComponent implements OnInit {
 
         data.filteredTimes = classTime;
         this.course = course;
+        this.terms = data.terms;
+        console.log(this.terms);
         console.log(this.course);
       },
       err => {

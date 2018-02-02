@@ -7,8 +7,12 @@ export class Course {
         public description: string,
         public creditHours: string,
         public meetTimes: string,
-        public instructor: string,
         public filteredTimes: string,
+        public terms: string[],
+        public instructor: {
+            username: string,
+            dept: string
+        },
         public students: {
             id: string,
             term: string,
