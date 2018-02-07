@@ -1,16 +1,5 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="terms" fxLayout="row" fxLayoutAlign="space-around center">
-        <div *ngFor="let curTerm of terms">
-          <button mat-raised-button *ngIf="term === curTerm; else normalButton">{{term}}</button>
-          <ng-template #normalButton>
-            <button mat-button [routerLink]="['/courses', name, curTerm]">{{curTerm}}</button>
-          </ng-template>
-        </div>
-      </div>
-    </div>
-  </div>
+  
   <div class="row">
     <div class="col-md-12">
       <mat-card class="container">
@@ -43,3 +32,4 @@
       </mat-card>
     </div>
   </div>
+</div>

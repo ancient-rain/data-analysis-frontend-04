@@ -12,6 +12,7 @@ import {
     StudentInfoComponent,
     StudentTermInfoComponent
 } from './student/index';
+import { CourseStudentInfoComponent } from './course-information/course-student-info/course-student-info.component';
 
 const routes: Routes = [
     {
@@ -30,12 +31,15 @@ const routes: Routes = [
         component: SingleCourseInfoComponent,
         canActivate: [AuthGuard]
     },
-    {
-        path: 'courses/:name/:term',
-        pathMatch: 'full',
-        component: CourseInformationComponent,
-        canActivate: [AuthGuard]
-    },
+    // {
+    //     path: 'courses/:name/:term',
+    //     pathMatch: 'full',
+    //     component: CourseInformationComponent,
+    //     children: [
+    //         {path: 'course/:name/:term', component: CourseStudentInfoComponent}
+    //     ],
+    //     canActivate: [AuthGuard]
+    // },
     {
         path: 'faculty/:username/:term',
         pathMatch: 'full',
