@@ -11,9 +11,9 @@ export class CourseService {
 
   constructor(private http: HttpClient) { }
 
-  getCoursesTermInfo(name: String, term: String): Observable<Courses[]> {
+  getCoursesTermInfo(name: String, term: String): Observable<Course[]> {
     const url = `${this.domainUrl}/courses/${name}/${term}`;
-    return this.http.get<Courses[]>(url)
+    return this.http.get<Course[]>(url)
       .catch((error: any) =>
         Observable.throw(error.json().error || 'Server error'));
   }
