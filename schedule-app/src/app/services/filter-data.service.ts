@@ -3,8 +3,8 @@ import { Course } from '../models/course';
 
 @Injectable()
 export class FilterDataService {
-    days: [string];
-    hours: [number];
+    days: string[];
+    hours: number[];
     finalLength: number;
 
     constructor() {
@@ -13,11 +13,11 @@ export class FilterDataService {
         this.finalLength = 400;
     }
 
-    getDays(): [string] {
+    getDays(): string[] {
         return this.days;
     }
 
-    getHours(): [number] {
+    getHours(): number[] {
         return this.hours;
     }
 
@@ -140,4 +140,5 @@ export class FilterDataService {
                 return 'Saturday';
         }
     }
+
 }
