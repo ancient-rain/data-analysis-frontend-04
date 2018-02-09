@@ -20,8 +20,8 @@ export class StudentTermInfoComponent implements OnInit {
   username: string;
   term: string;
   schedule: Map<string, string>;
-  days: [string];
-  hours: [number];
+  days: string[];
+  hours: number[];
   finalLength: number;
   previousTerm: Term;
   curTerm: Term;

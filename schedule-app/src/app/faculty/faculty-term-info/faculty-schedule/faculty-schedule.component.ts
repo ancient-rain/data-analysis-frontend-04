@@ -10,8 +10,8 @@ import { FilterDataService } from '../../../services/filter-data.service';
 export class FacultyScheduleComponent {
   // @Input() faculty: Faculty;
   @Input() schedule: Map<string, string>;
-  hours: [number];
-  days: [string];
+  hours: number[];
+  days: string[];
   curVal: string;
 
   constructor(private filterService: FilterDataService) {

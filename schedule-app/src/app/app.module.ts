@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,10 +18,12 @@ import { AuthGuard } from './guards/auth.guard';
 
 import { AuthService } from './services/auth.service';
 import { EmitterService } from './services/emitter.service';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,8 @@ import { EmitterService } from './services/emitter.service';
     FlexLayoutModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     StudentModule,
     CourseModule,
     FacultyModule,
