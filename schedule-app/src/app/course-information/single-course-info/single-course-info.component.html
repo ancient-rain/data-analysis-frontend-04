@@ -2,10 +2,27 @@
   <div class="row">
     <div class="col-md-12">
       <div class="terms" fxLayout="row" fxLayoutAlign="space-around center">
-        <div *ngFor="let term of terms">
-          <button mat-raised-button *ngIf="term === course.term; else normalButton">{{term}}</button>
-          <ng-template #normalButton>
-            <button mat-button [routerLink]="['/course', course.name, term]">{{term}}</button>
+        <div>
+          <button mat-button *ngIf="previousTerm.term !== ''; else previous" [routerLink]="['/course', course.name, previousTerm.term]">
+            <mat-icon>keyboard_arrow_left</mat-icon> Previous Term
+          </button>
+          <ng-template #previous>
+            <button mat-button disabled>
+              <mat-icon>keyboard_arrow_left</mat-icon> Previous Term
+            </button>
+          </ng-template>
+        </div>
+        <button mat-raised-button color="accent">{{curTerm.name}}</button>
+        <div>
+          <button mat-button *ngIf="nextTerm.term !== ''; else next" [routerLink]="['/course', course.name, nextTerm.term]">
+            Next Term
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+          <ng-template #next>
+            <button mat-button disabled>
+              Next Term
+              <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
           </ng-template>
         </div>
       </div>
