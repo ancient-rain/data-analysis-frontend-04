@@ -1,3 +1,4 @@
+import { SearchComponent } from './search/search.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
@@ -15,6 +16,11 @@ import {
 import { CourseStudentInfoComponent } from './course-information/course-student-info/course-student-info.component';
 
 const routes: Routes = [
+    {
+        path: '',
+        pathMatch: 'full',
+        component: SearchComponent
+    },
     {
         path: 'signin',
         pathMatch: 'full',

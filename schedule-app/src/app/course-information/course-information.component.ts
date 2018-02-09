@@ -19,8 +19,8 @@ export class CourseInformationComponent implements OnInit {
   term: string;
   courses: Courses[];
   schedule: Map<string, string> = new Map<string, string>();
-  days: [string];
-  hours: [number];
+  days: string[];
+  hours: number[];
   finalLength: number;
   terms;
 
