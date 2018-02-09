@@ -6,6 +6,7 @@ import { Course } from '../../models/course';
 import { CourseService } from '../../services/course.service';
 import { Faculty } from '../../models/faculty';
 import { FilterDataService } from '../../services/filter-data.service';
+import { Term } from '../../models/term';
 
 
 @Component({
@@ -20,10 +21,12 @@ export class SingleCourseInfoComponent implements OnInit {
   term: string;
   course: Course;
   schedule: Map<string, string> = new Map<string, string>();
-  days: [string];
-  hours: [number];
+  days: string[];
+  hours: number[];
   finalLength: number;
-  terms;
+  previousTerm: Term;
+  curTerm: Term;
+  nextTerm: Term;
 
   constructor(private courseService: CourseService,
     private filterService: FilterDataService,
@@ -42,11 +45,38 @@ export class SingleCourseInfoComponent implements OnInit {
 
         data.filteredTimes = classTime;
         this.course = course;
-        this.terms = data.terms;
+        this.previousTerm = new Term('', '', '', '', '');
+        this.curTerm = new Term('', '', '', '', '');
+        this.nextTerm = new Term('', '', '', '', '');
+
+        this.updateTerms(data.terms, data.term);
       },
-      err => {
-        this.router.navigate(['not-found']);
-      });
+        err => {
+          this.router.navigate(['not-found']);
+        });
+  }
+
+  updateTerms(terms, term) {
+    for (let i = 0; i < terms.length; i++) {
+      if (terms[i].term === term) {
+        this.curTerm = terms[i];
+        this.setPreviousTerm(terms, i);
+        this.setNextTerm(terms, i);
+        break;
+      }
+    }
+  }
+
+  setPreviousTerm(terms, index) {
+    if (index !== 0) {
+      this.previousTerm = terms[index - 1];
+    }
+  }
+
+  setNextTerm(terms, index) {
+    if (index !== terms.length - 1) {
+      this.nextTerm = terms[index + 1];
+    }
   }
 
   ngOnInit() {
