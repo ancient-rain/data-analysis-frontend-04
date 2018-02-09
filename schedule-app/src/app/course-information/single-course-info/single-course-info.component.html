@@ -16,34 +16,7 @@
       <app-course-faculty-info [course]="course"></app-course-faculty-info>
     </div>
     <div class="col-md-9">
-      <mat-card class="container">
-        <mat-card-content>
-          <table class="table">
-            <thead>
-              <tr class="headers">
-                <th>Course</th>
-                <th>Description</th>
-                <th>Instructor</th>
-                <th>Credit</th>
-                <th>Students</th>
-                <th>Term Schedule</th>
-              </tr>
-              <tr>
-                <th>
-                  {{course.name}}
-                </th>
-                <th>{{course.description}}</th>
-                <th>
-                  <a [routerLink]="['/faculty', course.instructor.username, course.term]">{{course.instructor.username}}</a>
-                </th>
-                <th>{{course.creditHours}}</th>
-                <th>{{course.students.length}}</th>
-                <th>{{course.filteredTimes}}</th>
-              </tr>
-            </thead>
-          </table>
-        </mat-card-content>
-      </mat-card>
+      <app-course-information></app-course-information>
     </div>
   </div>
   <div class="row">

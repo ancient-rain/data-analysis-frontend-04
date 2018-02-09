@@ -15,7 +15,7 @@ import { FilterDataService } from '../../services/filter-data.service';
 })
 export class SingleCourseInfoComponent implements OnInit {
 
-  private coursesUrl = '/courses/:name/:term';
+  private coursesUrl = '/course/:name/:term';
   name: string;
   term: string;
   course: Course;

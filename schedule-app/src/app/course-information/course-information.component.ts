@@ -34,6 +34,8 @@ export class CourseInformationComponent implements OnInit {
   }
 
   loadCourses() {
+    this.name = this.name.split('-')[0];
+    console.log(this.name);
     this.courseService.getCoursesTermInfo(this.name, this.term)
       .subscribe(courses => {
         const courseArr = Array<any>(courses.length);
