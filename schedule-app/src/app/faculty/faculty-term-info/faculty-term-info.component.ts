@@ -7,6 +7,7 @@ import { Course } from '../../models/course';
 import { FacultyService } from '../../services/faculty.service';
 import { EmitterService } from '../../services/emitter.service';
 import { FilterDataService } from '../../services/filter-data.service';
+import { Term } from '../../models/term';
 
 @Component({
   selector: 'app-faculty-term-info',
@@ -21,7 +22,9 @@ export class FacultyTermInfoComponent implements OnInit {
   days: [string];
   hours: [number];
   finalLength: number;
-  terms;
+  previousTerm: Term;
+  curTerm: Term;
+  nextTerm: Term;
 
   constructor(private facultyService: FacultyService,
     private filterService: FilterDataService,
@@ -38,9 +41,12 @@ export class FacultyTermInfoComponent implements OnInit {
         const data = faculty[0];
 
         this.faculty = faculty;
-        this.terms = data.terms;
         this.schedule = new Map<string, string>();
+        this.previousTerm = new Term('', '', '', '', '');
+        this.curTerm = new Term('', '', '', '', '');
+        this.nextTerm = new Term('', '', '', '', '');
 
+        this.updateTerms(data.terms, data.term);
         this.filterClasses(data);
         this.filterService.updateSchedule(this.schedule, data.courses);
       },
@@ -54,6 +60,29 @@ export class FacultyTermInfoComponent implements OnInit {
       const course = data.courses[i];
       const classTime = this.filterService.getClassTime(course);
       course.filteredTimes = classTime;
+    }
+  }
+
+  updateTerms(terms, term) {
+    for (let i = 0; i < terms.length; i++) {
+      if (terms[i].term === term) {
+        this.curTerm = terms[i];
+        this.setPreviousTerm(terms, i);
+        this.setNextTerm(terms, i);
+        break;
+      }
+    }
+  }
+
+  setPreviousTerm(terms, index) {
+    if (index !== 0) {
+      this.previousTerm = terms[index - 1];
+    }
+  }
+
+  setNextTerm(terms, index) {
+    if (index !== terms.length - 1) {
+      this.nextTerm = terms[index + 1];
     }
   }
 

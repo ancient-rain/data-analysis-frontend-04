@@ -26,7 +26,6 @@ export class StudentTermInfoComponent implements OnInit {
   previousTerm: Term;
   curTerm: Term;
   nextTerm: Term;
-  // terms;
 
   constructor(private studentService: StudentService,
     private filterService: FilterDataService,
