@@ -7,6 +7,7 @@ import { StudentService } from '../../services/student.service';
 import { EmitterService } from '../../services/emitter.service';
 import { FilterDataService } from '../../services/filter-data.service';
 import { Course } from '../../models/course';
+import { Term } from '../../models/term';
 
 @Component({
   selector: 'app-student-term-info',
@@ -22,7 +23,10 @@ export class StudentTermInfoComponent implements OnInit {
   days: [string];
   hours: [number];
   finalLength: number;
-  terms;
+  previousTerm: Term;
+  curTerm: Term;
+  nextTerm: Term;
+  // terms;
 
   constructor(private studentService: StudentService,
     private filterService: FilterDataService,
@@ -39,15 +43,18 @@ export class StudentTermInfoComponent implements OnInit {
         const data = student[0];
 
         this.student = student;
-        this.terms = data.terms;
         this.schedule = new Map<string, string>();
+        this.previousTerm = new Term('', '', '', '', '');
+        this.curTerm = new Term('', '', '', '', '');
+        this.nextTerm = new Term('', '', '', '', '');
 
+        this.updateTerms(data.terms, data.term);
         this.filterClasses(data);
         this.filterService.updateSchedule(this.schedule, data.courses);
       },
-      err => {
-        this.router.navigate(['not-found']);
-      });
+        err => {
+          this.router.navigate(['not-found']);
+        });
   }
 
   filterClasses(data: any) {
@@ -55,6 +62,29 @@ export class StudentTermInfoComponent implements OnInit {
       const course = data.courses[i];
       const classTime = this.filterService.getClassTime(course);
       course.filteredTimes = classTime;
+    }
+  }
+
+  updateTerms(terms, term) {
+    for (let i = 0; i < terms.length; i++) {
+      if (terms[i].term === term) {
+        this.curTerm = terms[i];
+        this.setPreviousTerm(terms, i);
+        this.setNextTerm(terms, i);
+        break;
+      }
+    }
+  }
+
+  setPreviousTerm(terms, index) {
+    if (index !== 0) {
+      this.previousTerm = terms[index - 1];
+    }
+  }
+
+  setNextTerm(terms, index) {
+    if (index !== terms.length - 1) {
+      this.nextTerm = terms[index + 1];
     }
   }
 
