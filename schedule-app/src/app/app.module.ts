@@ -19,11 +19,13 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 import { EmitterService } from './services/emitter.service';
 import { SearchComponent } from './search/search.component';
+import { CreateGroupComponent } from './create-group/create-group.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    CreateGroupComponent
   ],
   imports: [
     BrowserModule,

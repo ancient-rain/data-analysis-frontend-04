@@ -12,10 +12,6 @@ mat-sidenav {
   right: 0;
 }
 
-.spacer {
-  margin: 0 0 15px 0;
-}
-
 .example-is-mobile .example-sidenav-container {
   flex: 1 0 auto;
 }

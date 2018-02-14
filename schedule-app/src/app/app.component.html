@@ -14,7 +14,7 @@
       <mat-nav-list>
         <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/']">Home</a>
         <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/student', authService.getUsername()]">My Courses</a>
-        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/']">Create a Group</a>
+        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/create-group']">Create a Group</a>
         <a mat-list-item (click)="sidenav.toggle();authService.signOut();">Sign Out</a>
       </mat-nav-list>
     </mat-sidenav>
