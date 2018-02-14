@@ -5,7 +5,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CreateGroupComponent } from './create-group/create-group.component';
+import {
+    CreateGroupComponent,
+    ViewGroupComponent
+} from './index';
 
 
 @NgModule({
@@ -19,10 +22,12 @@ import { CreateGroupComponent } from './create-group/create-group.component';
         BrowserAnimationsModule
     ],
     declarations: [
-        CreateGroupComponent
+        CreateGroupComponent,
+        ViewGroupComponent
     ],
     exports: [
-        CreateGroupComponent
+        CreateGroupComponent,
+        ViewGroupComponent
     ]
 })
 export class GroupsModule { }

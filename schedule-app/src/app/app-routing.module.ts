@@ -14,7 +14,8 @@ import {
     StudentTermInfoComponent
 } from './student/index';
 import {
-    CreateGroupComponent
+    CreateGroupComponent,
+    ViewGroupComponent
 } from './groups/index';
 import { CourseStudentInfoComponent } from './course-information/course-student-info/course-student-info.component';
 
@@ -32,7 +33,13 @@ const routes: Routes = [
     }, {
         path: 'create-group',
         pathMatch: 'full',
-        component: CreateGroupComponent
+        component: CreateGroupComponent,
+        canActivate: [AuthGuard]
+    }, {
+        path: 'groups/:id',
+        pathMatch: 'full',
+        component: ViewGroupComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'not-found',

@@ -44,7 +44,9 @@
   <div class="row" fxLayout="row" fxLayoutAlign="space-around center">
     <div class="col-md-3" *ngFor="let group of groups">
       <mat-card>
-        <mat-card-title>{{group.groupName}}</mat-card-title>
+        <mat-card-title>
+          <a [routerLink]="['/groups', group._id]">{{group.groupName}}</a>
+        </mat-card-title>
         <mat-card-content>
           <p>For:
             <a [routerLink]="['/course', group.className, term]">{{group.className}}</a>
