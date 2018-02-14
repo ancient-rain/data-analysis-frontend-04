@@ -1,21 +1,27 @@
-<mat-toolbar color="primary">
-  Schedule Lookup
-  <span fxFlex></span>
-  <button mat-button *ngIf="!authService.isSignedIn(); else options" (click)="authService.signIn()">
-    Login
-  </button>
-  <ng-template #options>
-    <button mat-button [matMenuTriggerFor]='menu'>
-      {{authService.getName()}} <mat-icon>settings</mat-icon>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-toolbar color="primary">
+      Options
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/']">Home</a>
+      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/student', authService.getUsername()]">My Courses</a>
+      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/']">Create a Group</a>
+      <a mat-list-item (click)="sidenav.toggle();authService.signOut();">Sign Out</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-toolbar color="primary">
+    <button mat-icon-button *ngIf="authService.isSignedIn()" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
     </button>
-    <mat-menu #menu="matMenu" [overlapTrigger]="false">
-      <button mat-menu-item [routerLink]="['/student', authService.getUsername()]">
-        My Courses
-      </button>
-      <button mat-menu-item (click)="authService.signOut()">
-        Log Out
-      </button>
-    </mat-menu>
-  </ng-template>
-</mat-toolbar>
-<router-outlet></router-outlet>
+    Schedule Lookup
+    <span fxFlex></span>
+    <button mat-button *ngIf="!authService.isSignedIn(); else options" (click)="authService.signIn()">
+      Login
+    </button>
+    <ng-template #options>
+      {{authService.getName()}}
+    </ng-template>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
