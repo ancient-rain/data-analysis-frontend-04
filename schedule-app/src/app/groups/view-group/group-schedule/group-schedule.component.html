@@ -28,7 +28,7 @@
         <tr *ngFor="let day of days">
           <th class="day">{{day}}</th>
           <th *ngFor="let hour of hours">
-            <span *ngIf="getValue(day, hour);">{{curVal}}</span>
+            <mat-icon *ngIf="!hasValue(day, hour)" class="open">thumb_up</mat-icon>
           </th>
         </tr>
       </thead>

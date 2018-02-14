@@ -7,8 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
     CreateGroupComponent,
-    ViewGroupComponent
+    ViewGroupComponent,
+    GroupInfoComponent,
+    GroupCoursesComponent,
+    GroupScheduleComponent
 } from './index';
+import { GroupService } from '../services/group.service';
 
 
 @NgModule({
@@ -23,11 +27,20 @@ import {
     ],
     declarations: [
         CreateGroupComponent,
-        ViewGroupComponent
+        ViewGroupComponent,
+        GroupInfoComponent,
+        GroupCoursesComponent,
+        GroupScheduleComponent
     ],
+    providers: [
+        GroupService
+      ],
     exports: [
         CreateGroupComponent,
-        ViewGroupComponent
+        ViewGroupComponent,
+        GroupInfoComponent,
+        GroupCoursesComponent,
+        GroupScheduleComponent
     ]
 })
 export class GroupsModule { }

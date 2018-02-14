@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Student } from '../models/student';
+import { Group } from '../models/group';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
@@ -10,9 +10,9 @@ export class GroupService {
 
   constructor(private http: HttpClient) { }
 
-  getStudentTermInfo(username: String, term: String): Observable<Student> {
-    const url = `${this.domainUrl}/student/${username}/${term}`;
-    return this.http.get<Student>(url)
+  getGroupById(id: String): Observable<Group> {
+    const url = `${this.domainUrl}/groups/${id}`;
+    return this.http.get<Group>(url)
       .catch((error: any) =>
         Observable.throw(error.json().error || 'Server error'));
   }

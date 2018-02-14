@@ -30,7 +30,9 @@ export class Group {
             name: string,
             description: string,
             meetTimes: string,
-            instructor: string
+            instructor: string,
+            creditHours: string,
+            filteredTimes: string
         }
     ) { }
 }
