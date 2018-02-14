@@ -14,14 +14,11 @@
     <button mat-icon-button *ngIf="authService.isSignedIn()" (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    Schedule Lookup
+    Schedule App
     <span fxFlex></span>
-    <button mat-button *ngIf="!authService.isSignedIn(); else options" (click)="authService.signIn()">
-      Login
-    </button>
-    <ng-template #options>
+    <button mat-button *ngIf="authService.isSignedIn(); else options">
       {{authService.getName()}}
-    </ng-template>
+    </button>
   </mat-toolbar>
   <router-outlet></router-outlet>
 </mat-sidenav-container>
