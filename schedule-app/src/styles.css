@@ -1,5 +1,4 @@
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
-
 body {
   background-color: #eee;
 }
@@ -41,4 +40,8 @@ a:not([href]):not([tabindex]):focus {
 
 a:not([href]):not([tabindex]):focus {
   outline: 1;
+}
+
+.mat-toolbar.mat-primary {
+  margin-bottom: 50px;
 }

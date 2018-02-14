@@ -19,7 +19,8 @@ const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        component: SearchComponent
+        component: SearchComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'signin',
@@ -37,15 +38,6 @@ const routes: Routes = [
         component: SingleCourseInfoComponent,
         canActivate: [AuthGuard]
     },
-    // {
-    //     path: 'courses/:name/:term',
-    //     pathMatch: 'full',
-    //     component: CourseInformationComponent,
-    //     children: [
-    //         {path: 'course/:name/:term', component: CourseStudentInfoComponent}
-    //     ],
-    //     canActivate: [AuthGuard]
-    // },
     {
         path: 'faculty/:username/:term',
         pathMatch: 'full',
@@ -64,10 +56,10 @@ const routes: Routes = [
         component: StudentTermInfoComponent,
         canActivate: [AuthGuard]
     },
-    // {
-    //     path: '**',
-    //     redirectTo: 'signin'
-    // }
+    {
+        path: '**',
+        redirectTo: 'signin'
+    }
 ];
 
 @NgModule({

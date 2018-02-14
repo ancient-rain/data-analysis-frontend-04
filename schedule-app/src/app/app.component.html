@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   Schedule Lookup
   <span fxFlex></span>
-  <button mat-button *ngIf="!authService.isSignedIn; else options" (click)="authService.signIn()">
+  <button mat-button *ngIf="!authService.isSignedIn(); else options" (click)="authService.signIn()">
     Login
   </button>
   <ng-template #options>
