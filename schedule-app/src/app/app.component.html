@@ -1,15 +1,4 @@
-<mat-sidenav-container>
-  <mat-sidenav #sidenav>
-    <mat-toolbar color="primary">
-      Options
-    </mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/']">Home</a>
-      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/student', authService.getUsername()]">My Courses</a>
-      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/']">Create a Group</a>
-      <a mat-list-item (click)="sidenav.toggle();authService.signOut();">Sign Out</a>
-    </mat-nav-list>
-  </mat-sidenav>
+<div class="new-container" [class.example-is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary">
     <button mat-icon-button *ngIf="authService.isSignedIn()" (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
@@ -20,5 +9,18 @@
       {{authService.getName()}}
     </h2>
   </mat-toolbar>
-  <router-outlet></router-outlet>
-</mat-sidenav-container>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/']">Home</a>
+        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/student', authService.getUsername()]">My Courses</a>
+        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/']">Create a Group</a>
+        <a mat-list-item (click)="sidenav.toggle();authService.signOut();">Sign Out</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="spacer"></div>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
