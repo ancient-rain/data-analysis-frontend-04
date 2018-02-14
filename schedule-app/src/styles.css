@@ -71,12 +71,6 @@ button:focus {
   outline: none;
 }
 
-a:not([href]):not([tabindex]),
-a:not([href]):not([tabindex]):hover {
-  color: inherit;
-  text-decoration: none;
-}
-
 .mat-input-container {
   width: 100%;
   display: block;

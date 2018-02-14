@@ -30,7 +30,7 @@ export class CreateGroupComponent {
     viewGroup(value) {
         if (this.groupForm.valid) {
             if (this.checkArrays()) {
-                
+
             }
         }
     }

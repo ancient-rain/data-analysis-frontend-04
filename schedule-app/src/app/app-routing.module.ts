@@ -5,7 +5,6 @@ import { BadRequestComponent } from './bad-request/bad-request.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { CourseInformationComponent } from './course-information/course-information.component';
 import { SingleCourseInfoComponent } from './course-information/single-course-info/single-course-info.component';
-import { CreateGroupComponent } from './create-group/create-group.component';
 import { SearchComponent } from './search/search.component';
 import {
     FacultyTermInfoComponent
@@ -14,6 +13,9 @@ import {
     StudentInfoComponent,
     StudentTermInfoComponent
 } from './student/index';
+import {
+    CreateGroupComponent
+} from './groups/index';
 import { CourseStudentInfoComponent } from './course-information/course-student-info/course-student-info.component';
 
 const routes: Routes = [
