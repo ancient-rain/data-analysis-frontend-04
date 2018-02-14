@@ -45,3 +45,19 @@ a:not([href]):not([tabindex]):focus {
 .mat-toolbar.mat-primary {
   margin-bottom: 50px;
 }
+
+input[type="text"]:not(textaarea) {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  height: 15px;
+}
+
+input[type="text"]:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+input[type="text"]:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}

@@ -5,14 +5,14 @@
         Search
       </mat-card-title>
       <mat-card-content>
-        <mat-input-container style="width:100%">
+        <mat-form-field style="width:100%">
           <input matInput placeholder="Username" type="text" formControlName="username">
           <mat-hint>
             <span [hidden]="searchForm.controls.username.valid || searchForm.controls.username.pristine">
               A username is required.
             </span>
           </mat-hint>
-        </mat-input-container>
+        </mat-form-field>
         <mat-input-container style="width:100%">
           <mat-select placeholder="Group" formControlName="group">
             <mat-option></mat-option>
