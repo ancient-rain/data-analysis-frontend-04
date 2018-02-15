@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { GroupService } from '../../services/group.service';
 
 @Component({
     selector: 'app-create-group',
@@ -23,14 +24,23 @@ export class CreateGroupComponent {
         faculty: ['']
     });
 
-    constructor(public fb: FormBuilder, private router: Router) {
-        console.log(!this.groupForm.valid, this.isEmpty(this.students), this.isEmpty(this.facultyMembers));
-    }
+    constructor(public fb: FormBuilder,
+        private groupService: GroupService,
+        private router: Router) { }
 
     viewGroup(value) {
         if (this.groupForm.valid) {
             if (this.checkArrays()) {
-
+                const group = {
+                    groupName: value.groupName,
+                    term: value.term,
+                    className: value.class,
+                    faculty: this.facultyMembers,
+                    students: this.students
+                };
+                this.groupService.createGroup(group).subscribe(result => {
+                    this.router.navigate(['/groups', result._id]);
+                });
             }
         }
     }
@@ -83,7 +93,7 @@ export class CreateGroupComponent {
     checkArrays() {
         this.isEmpty(this.students) ? this.studentsEmpty = true : this.studentsEmpty = false;
         this.isEmpty(this.facultyMembers) ? this.facultyEmpty = true : this.facultyEmpty = false;
-        return !(this.studentsEmpty && this.facultyEmpty);
+        return !(this.studentsEmpty || this.facultyEmpty);
     }
 
 }

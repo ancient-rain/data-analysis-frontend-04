@@ -38,7 +38,6 @@ export class ViewGroupComponent implements OnInit {
 
             this.filterClasses(data);
             this.filterService.updateSchedule(this.schedule, data.courses);
-            console.log(this.schedule);
         });
     }
 

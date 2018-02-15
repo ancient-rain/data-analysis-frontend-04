@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="groupForm" (ngSubmit)="viewGroup(groupForm.value)">
+  <form [formGroup]="groupForm">
     <mat-card>
       <mat-card-title>
         Create a Group
@@ -42,9 +42,11 @@
             </mat-error>
           </mat-hint>
         </mat-input-container>
-        <button mat-button color="primary" *ngFor="let student of students" (click)="removeStudent(student)">
-          {{student}}
-        </button>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <button mat-button color="primary" *ngFor="let student of students" (click)="removeStudent(student)">
+            {{student}}
+          </button>
+        </div>
         <div class="spacer"></div>
         <button mat-raised-button color="accent" (click)="addStudent(groupForm.value.students)" fxLayoutAlign="end center">
           Add Student
@@ -58,9 +60,11 @@
             </mat-error>
           </mat-hint>
         </mat-input-container>
-        <button mat-button color="primary" *ngFor="let faculty of facultyMembers" (click)="removeFaculty(faculty)">
-          {{faculty}}
-        </button>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <button mat-button color="primary" *ngFor="let faculty of facultyMembers" (click)="removeFaculty(faculty)">
+            {{faculty}}
+          </button>
+        </div>
         <div class="spacer"></div>
         <button mat-raised-button color="accent" (click)="addFaculty(groupForm.value.faculty)" fxLayoutAlign="end center">
           Add Faculty
@@ -68,7 +72,7 @@
         <div class="spacer"></div>
       </mat-card-content>
       <mat-card-actions fxLayout="row" fxLayoutAlign="end end">
-        <button mat-raised-button class="mat-primary" [disabled]="!groupForm.valid">
+        <button mat-raised-button class="mat-primary" [disabled]="!groupForm.valid"  (click)="viewGroup(groupForm.value)">
           Add Group
         </button>
       </mat-card-actions>
