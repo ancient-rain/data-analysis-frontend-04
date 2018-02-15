@@ -1,3 +1,25 @@
+Trevor Bednarek and Caleb Henstein
+
+FEATURES COMPLETED:
+- All functional requirements requested in project document
+- Groups are also able to include faculty members
+
+FEATURES CURRENTLY UNDER DEVELOPMENT:
+- Ability to use the home page search form to search for courses (back-end completed, front-end in progress)
+- Ability to search for a list of students at once
+- Protecting advisee's list for faculty members (only allow faculty members to see advisee list)
+- Page that shows all of the course's the signed in student has taken
+
+FEATURES NOT STARTED:
+- none
+
+KNOWN BUGS:
+- When having to list a large number of courses, the page lists the first few, then leaves empty spots for the rest.
+    Likely problem with the filtering done on the courses
+
+
+
+
 # ScheduleApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
