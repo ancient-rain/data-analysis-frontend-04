@@ -10,7 +10,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class SearchComponent {
 
     errorMessage: string;
-    groups = ['faculty', 'student'];
+    groups = ['Faculty', 'Student'];
     terms = ['201630', '201710'];
 
     public searchForm = this.fb.group({
@@ -23,7 +23,12 @@ export class SearchComponent {
 
     search(value) {
         if (this.searchForm.valid) {
-            this.router.navigate(['/', value.group, value.username, value.term]);
+            this.router.navigate([
+                '/',
+                value.group.toLowerCase(),
+                value.username,
+                value.term
+            ]);
         }
     }
 }

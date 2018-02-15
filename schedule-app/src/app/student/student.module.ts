@@ -9,7 +9,7 @@ import {
   StudentTermInfoComponent,
   StudentTermInformationComponent,
   StudentCourseInfoComponent,
-  StudentScheduleComponent
+  StudentScheduleComponent,
 } from './index';
 
 @NgModule({

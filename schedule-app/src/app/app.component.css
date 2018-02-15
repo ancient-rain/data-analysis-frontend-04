@@ -1,0 +1,22 @@
+mat-sidenav {
+  width: 250px;
+}
+
+.new-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-is-mobile .example-sidenav-container {
+  flex: 1 0 auto;
+}
+
+.mat-drawer {
+  -webkit-box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
+}

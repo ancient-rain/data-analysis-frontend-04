@@ -14,6 +14,12 @@ export class Student {
         public graduationDate: string,
         public courses: [Course],
         public advisor: Faculty,
-        public terms: [string]
+        public terms: [string],
+        public groups: [{
+            id: string,
+            groupName: string,
+            faculty: [string],
+            students: [string]
+        }]
     ) { }
 }

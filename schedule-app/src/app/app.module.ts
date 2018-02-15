@@ -11,6 +11,7 @@ import { StudentModule } from './student/student.module';
 import { AppMaterialModule } from './app-material.module';
 import { CourseModule } from './course-information/course.module';
 import { FacultyModule } from './faculty/faculty.module';
+import { GroupsModule } from './groups/group.module';
 import { BadRequestModule } from './bad-request/bad-request.module';
 import { SignInModule } from './sign-in/sign-in.module';
 
@@ -19,6 +20,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
 import { EmitterService } from './services/emitter.service';
 import { SearchComponent } from './search/search.component';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { SearchComponent } from './search/search.component';
     StudentModule,
     CourseModule,
     FacultyModule,
+    GroupsModule,
     BadRequestModule,
     SignInModule
   ],

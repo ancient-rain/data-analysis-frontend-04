@@ -1,5 +1,5 @@
 <div class="container" fxLayout="column" fxLayoutAlgin="center center">
-    <mat-card *ngIf="!authService.isSignedIn; else signOut">
+    <mat-card *ngIf="!authService.isSignedIn(); else signOut">
         <mat-card-title fxLayout fxLayoutAlign="center center">
             <h2>Welcome</h2>
         </mat-card-title>

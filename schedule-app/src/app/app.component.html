@@ -1,21 +1,26 @@
-<mat-toolbar color="primary">
-  Schedule Lookup
-  <span fxFlex></span>
-  <button mat-button *ngIf="!authService.isSignedIn; else options" (click)="authService.signIn()">
-    Login
-  </button>
-  <ng-template #options>
-    <button mat-button [matMenuTriggerFor]='menu'>
-      {{authService.getName()}} <mat-icon>settings</mat-icon>
+<div class="new-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary">
+    <button mat-icon-button *ngIf="authService.isSignedIn()" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
     </button>
-    <mat-menu #menu="matMenu" [overlapTrigger]="false">
-      <button mat-menu-item [routerLink]="['/student', authService.getUsername()]">
-        My Courses
-      </button>
-      <button mat-menu-item (click)="authService.signOut()">
-        Log Out
-      </button>
-    </mat-menu>
-  </ng-template>
-</mat-toolbar>
-<router-outlet></router-outlet>
+    <h2>Schedule App</h2>
+    <span fxFlex></span>
+    <h2 *ngIf="authService.isSignedIn()">
+      {{authService.getName()}}
+    </h2>
+  </mat-toolbar>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/']">Home</a>
+        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/student', authService.getUsername()]">My Courses</a>
+        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/create-group']">Create a Group</a>
+        <a mat-list-item (click)="sidenav.toggle();authService.signOut();" style="color: inherit; text-decoration: none;">Sign Out</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="spacer"></div>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

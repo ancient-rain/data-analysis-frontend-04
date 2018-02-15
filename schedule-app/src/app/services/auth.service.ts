@@ -8,7 +8,6 @@ import 'rosefire';
 @Injectable()
 export class AuthService {
   user: User;
-  isSignedIn = false;
 
   constructor(private router: Router) {
     this.user = {
@@ -27,26 +26,27 @@ export class AuthService {
         return;
       }
 
+      localStorage.setItem('token', rfUser.token);
+      localStorage.setItem('name', rfUser.name);
+
       this.user.email = rfUser.email;
       this.user.group = rfUser.group;
       this.user.name = rfUser.name;
       this.user.token = rfUser.token;
       this.user.username = rfUser.username;
-      this.isSignedIn = true;
 
-      localStorage.setItem('token', this.user.token);
-
-      /* remove hardcoded term when route is available */
-      this.router.navigate([
-        `/${rfUser.group.toLowerCase()}`,
-        rfUser.username,
-        '201710'
-      ]);
+      this.router.navigate(['/']);
     });
   }
 
+  isSignedIn() {
+    return localStorage.getItem('token') ? true : false;
+  }
+
   signOut() {
-    localStorage.setItem('token', '');
+    localStorage.removeItem('token');
+    localStorage.removeItem('name');
+
     this.user = {
       email: '',
       group: '',
@@ -54,7 +54,7 @@ export class AuthService {
       token: '',
       username: ''
     };
-    this.isSignedIn = false;
+
     this.router.navigate(['signin']);
   }
 
@@ -67,7 +67,7 @@ export class AuthService {
   }
 
   getName() {
-    return this.user.name;
+    return localStorage.getItem('name');
   }
 
   getToken() {

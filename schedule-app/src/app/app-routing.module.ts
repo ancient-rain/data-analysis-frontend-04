@@ -1,4 +1,3 @@
-import { SearchComponent } from './search/search.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
@@ -6,6 +5,7 @@ import { BadRequestComponent } from './bad-request/bad-request.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { CourseInformationComponent } from './course-information/course-information.component';
 import { SingleCourseInfoComponent } from './course-information/single-course-info/single-course-info.component';
+import { SearchComponent } from './search/search.component';
 import {
     FacultyTermInfoComponent
 } from './faculty/index';
@@ -13,18 +13,33 @@ import {
     StudentInfoComponent,
     StudentTermInfoComponent
 } from './student/index';
+import {
+    CreateGroupComponent,
+    ViewGroupComponent
+} from './groups/index';
 import { CourseStudentInfoComponent } from './course-information/course-student-info/course-student-info.component';
 
 const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        component: SearchComponent
+        component: SearchComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'signin',
         pathMatch: 'full',
         component: SignInComponent
+    }, {
+        path: 'create-group',
+        pathMatch: 'full',
+        component: CreateGroupComponent,
+        canActivate: [AuthGuard]
+    }, {
+        path: 'groups/:id',
+        pathMatch: 'full',
+        component: ViewGroupComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'not-found',
@@ -37,15 +52,6 @@ const routes: Routes = [
         component: SingleCourseInfoComponent,
         canActivate: [AuthGuard]
     },
-    // {
-    //     path: 'courses/:name/:term',
-    //     pathMatch: 'full',
-    //     component: CourseInformationComponent,
-    //     children: [
-    //         {path: 'course/:name/:term', component: CourseStudentInfoComponent}
-    //     ],
-    //     canActivate: [AuthGuard]
-    // },
     {
         path: 'faculty/:username/:term',
         pathMatch: 'full',
@@ -64,10 +70,10 @@ const routes: Routes = [
         component: StudentTermInfoComponent,
         canActivate: [AuthGuard]
     },
-    // {
-    //     path: '**',
-    //     redirectTo: 'signin'
-    // }
+    {
+        path: '**',
+        redirectTo: 'signin'
+    }
 ];
 
 @NgModule({

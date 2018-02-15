@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-title>{{group.groupName}}</mat-card-title>
+  <mat-card-content>
+    <p>For:
+      <a [routerLink]="['/course', group.className, term]">{{group.className}}</a>
+    </p>
+    <hr>
+    <p *ngIf="group.faculty.length === 1; else clients">Client:</p>
+    <ng-template #clients>
+      <p>Clients:</p>
+    </ng-template>
+    <p *ngFor="let client of group.faculty">
+      <a [routerLink]="['/faculty', client.username, term]">{{client.username}}</a>: 
+      {{client.name}}
+    </p>
+    <hr>
+    <p *ngIf="group.students.length === 1; else members">Members:</p>
+    <ng-template #members>
+      <p>Members:</p>
+    </ng-template>
+    <p *ngFor="let member of group.students">
+      <a [routerLink]="['/student', member.username, term]">{{member.username}}</a>: 
+      {{member.name}} 
+    </p>
+  </mat-card-content>
+</mat-card>
