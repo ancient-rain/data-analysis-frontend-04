@@ -25,4 +25,18 @@ export class StudentService {
         Observable.throw(error.json().error || 'Server error'));
   }
 
+  getCourseTakenInfo(course: String, term: String): Observable<[Student]> {
+    const url = `${this.domainUrl}/courses/${course}/students/taken/${term}`;
+    return this.http.get<Student>(url)
+      .catch((error: any) =>
+        Observable.throw(error.json().error || 'Server error'));
+  }
+
+  getCourseNotTakenInfo(course: String, term: String): Observable<[Student]> {
+    const url = `${this.domainUrl}/courses/${course}/students/not-taken/${term}`;
+    return this.http.get<Student>(url)
+      .catch((error: any) =>
+        Observable.throw(error.json().error || 'Server error'));
+  }
+
 }
