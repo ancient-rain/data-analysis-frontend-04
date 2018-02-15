@@ -29,7 +29,7 @@
         Search
       </mat-card-title>
       <mat-card-content>
-        <mat-input-container>
+        <mat-input-container dividerColor="accent">
           <input matInput placeholder="Username" type="text" formControlName="username">
           <mat-hint>
             <span [hidden]="searchForm.controls.username.valid || searchForm.controls.username.pristine">
@@ -37,7 +37,7 @@
             </span>
           </mat-hint>
         </mat-input-container>
-        <mat-input-container>
+        <mat-input-container dividerColor="accent">
           <mat-select placeholder="Group" formControlName="group">
             <mat-option></mat-option>
             <mat-option *ngFor="let group of groups" [value]="group">
@@ -50,7 +50,7 @@
             </span>
           </mat-hint>
         </mat-input-container>
-        <mat-input-container>
+        <mat-input-container dividerColor="accent">
           <mat-select placeholder="Term" formControlName="term">
             <mat-option></mat-option>
             <mat-option *ngFor="let term of terms" [value]="term">

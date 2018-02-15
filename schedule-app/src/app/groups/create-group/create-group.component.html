@@ -5,7 +5,7 @@
         Create a Group
       </mat-card-title>
       <mat-card-content fxLayout="column" fxLayoutAlign="start start">
-        <mat-input-container>
+        <mat-input-container dividerColor="accent">
           <input matInput placeholder="Group Name" type="text" formControlName="groupName">
           <mat-hint>
             <span [hidden]="groupForm.controls.groupName.valid || groupForm.controls.groupName.pristine">
@@ -13,7 +13,7 @@
             </span>
           </mat-hint>
         </mat-input-container>
-        <mat-input-container>
+        <mat-input-container dividerColor="accent">
           <input matInput placeholder="Class i.e. CSSE230-01" type="text" formControlName="class">
           <mat-hint>
             <span [hidden]="groupForm.controls.class.valid || groupForm.controls.class.pristine">
@@ -21,7 +21,7 @@
             </span>
           </mat-hint>
         </mat-input-container>
-        <mat-input-container>
+        <mat-input-container dividerColor="accent">
           <mat-select placeholder="Term" formControlName="term">
             <mat-option></mat-option>
             <mat-option *ngFor="let term of terms" [value]="term">
@@ -34,7 +34,7 @@
             </span>
           </mat-hint>
         </mat-input-container>
-        <mat-input-container>
+        <mat-input-container dividerColor="accent">
           <input matInput placeholder="Add students by username" type="text" formControlName="students">
           <mat-hint>
             <mat-error *ngIf="studentsEmpty">
@@ -50,7 +50,7 @@
           Add Student
         </button>
         <div class="spacer"></div>
-        <mat-input-container>
+        <mat-input-container dividerColor="accent">
           <input matInput placeholder="Add faculty by username" type="text" formControlName="faculty">
           <mat-hint>
             <mat-error *ngIf="facultyEmpty">
