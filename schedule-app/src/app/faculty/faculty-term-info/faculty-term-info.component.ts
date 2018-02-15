@@ -25,6 +25,7 @@ export class FacultyTermInfoComponent implements OnInit {
   previousTerm: Term;
   curTerm: Term;
   nextTerm: Term;
+  groups: any[];
 
   constructor(private facultyService: FacultyService,
     private filterService: FilterDataService,
@@ -41,6 +42,7 @@ export class FacultyTermInfoComponent implements OnInit {
         const data = faculty[0];
 
         this.faculty = faculty;
+        this.groups = data.groups;
         this.schedule = new Map<string, string>();
         this.previousTerm = new Term('', '', '', '', '');
         this.curTerm = new Term('', '', '', '', '');
