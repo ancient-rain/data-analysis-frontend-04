@@ -79,3 +79,7 @@ button:focus {
 .spacer {
   margin: 0 0 15px 0;
 }
+
+tr.headers {
+  background-color: #dee2e6;
+}
