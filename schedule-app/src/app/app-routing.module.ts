@@ -18,6 +18,8 @@ import {
     ViewGroupComponent
 } from './groups/index';
 import { CourseStudentInfoComponent } from './course-information/course-student-info/course-student-info.component';
+import { CourseTakenComponent } from './course-information/course-taken/course-taken.component';
+import { CourseNotTakenComponent } from './course-information/course-not-taken/course-not-taken.component';
 
 const routes: Routes = [
     {
@@ -62,6 +64,18 @@ const routes: Routes = [
         path: 'student/:username',
         pathMatch: 'full',
         component: StudentInfoComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'courses/:name/students/taken/:term',
+        pathMatch: 'full',
+        component: CourseTakenComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'courses/:name/students/not-taken/:term',
+        pathMatch: 'full',
+        component: CourseNotTakenComponent,
         canActivate: [AuthGuard]
     },
     {

@@ -8,6 +8,8 @@ import { CourseService } from '../services/course.service';
 import { CourseFacultyInfoComponent } from './course-faculty-info/course-faculty-info.component';
 import { CourseStudentInfoComponent } from './course-student-info/course-student-info.component';
 import { SingleCourseInfoComponent } from './single-course-info/single-course-info.component';
+import { CourseTakenComponent } from './course-taken/course-taken.component';
+import { CourseNotTakenComponent } from './course-not-taken/course-not-taken.component';
 
 @NgModule({
   imports: [
@@ -20,7 +22,9 @@ import { SingleCourseInfoComponent } from './single-course-info/single-course-in
       CourseInformationComponent,
       CourseFacultyInfoComponent,
       CourseStudentInfoComponent,
-      SingleCourseInfoComponent
+      SingleCourseInfoComponent,
+      CourseTakenComponent,
+      CourseNotTakenComponent
   ],
   providers: [
     CourseService
