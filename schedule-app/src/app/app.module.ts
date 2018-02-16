@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StudentModule } from './student/student.module';
 import { AppMaterialModule } from './app-material.module';
-import { CourseModule } from './course-information/course.module';
+import { CourseModule } from './courses/courses.module';
 import { FacultyModule } from './faculty/faculty.module';
 import { GroupsModule } from './groups/group.module';
 import { BadRequestModule } from './bad-request/bad-request.module';

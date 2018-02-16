@@ -3,8 +3,8 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { BadRequestComponent } from './bad-request/bad-request.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { CourseInformationComponent } from './course-information/course-information.component';
-import { SingleCourseInfoComponent } from './course-information/single-course-info/single-course-info.component';
+// import { CourseInformationComponent } from './course-information/course-information.component';
+// import { SingleCourseInfoComponent } from './course-information/single-course-info/single-course-info.component';
 import { SearchComponent } from './search/search.component';
 import {
     FacultyTermInfoComponent
@@ -18,12 +18,12 @@ import {
     ViewGroupComponent
 } from './groups/index';
 import {
-    CourseStudentInfoComponent,
+    // CourseStudentInfoComponent,
     CourseTakenComponent,
     CourseTakenYearComponent,
     CourseNotTakenComponent,
     CourseNotTakenYearComponent
-} from './course-information/index';
+} from './courses/index';
 
 
 const routes: Routes = [
@@ -53,12 +53,12 @@ const routes: Routes = [
         pathMatch: 'full',
         component: BadRequestComponent
     },
-    {
-        path: 'course/:name/:term',
-        pathMatch: 'full',
-        component: SingleCourseInfoComponent,
-        canActivate: [AuthGuard]
-    },
+    // {
+    //     path: 'course/:name/:term',
+    //     pathMatch: 'full',
+    //     component: SingleCourseInfoComponent,
+    //     canActivate: [AuthGuard]
+    // },
     {
         path: 'faculty/:username/:term',
         pathMatch: 'full',

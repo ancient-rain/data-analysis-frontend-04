@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { AppMaterialModule } from '../app-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from '../app-routing.module';
-import { CourseInformationComponent } from './course-information.component';
+// import { CourseInformationComponent } from './course-information.component';
 import { CourseService } from '../services/course.service';
 import {
-  CourseFacultyInfoComponent,
-  CourseStudentInfoComponent,
-  SingleCourseInfoComponent,
+//   CourseFacultyInfoComponent,
+//   CourseStudentInfoComponent,
+//   SingleCourseInfoComponent,
   CourseTakenComponent,
   CourseTakenYearComponent,
   CourseNotTakenComponent,
@@ -24,10 +24,10 @@ import {
     AppRoutingModule
   ],
   declarations: [
-      CourseInformationComponent,
-      CourseFacultyInfoComponent,
-      CourseStudentInfoComponent,
-      SingleCourseInfoComponent,
+    //   CourseInformationComponent,
+    //   CourseFacultyInfoComponent,
+    //   CourseStudentInfoComponent,
+    //   SingleCourseInfoComponent,
       CourseTakenComponent,
       CourseTakenYearComponent,
       CourseNotTakenComponent,
@@ -37,7 +37,7 @@ import {
     CourseService
   ],
   exports: [
-    CourseInformationComponent
+    // CourseInformationComponent
   ]
 })
 export class CourseModule { }
