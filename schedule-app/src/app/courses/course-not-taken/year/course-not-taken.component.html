@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="terms" fxLayout="row" fxLayoutAlign="space-around center">
         <button mat-raised-button color="accent" [routerLink]="['/course', course, '201630']">View {{course}} Info</button>
-        <button mat-raised-button color="accent" (click)="switchView()">Switch to Not Taken Page</button>
+        <button mat-raised-button color="accent" (click)="switchView()">Switch to Taken Page</button>
       </div>
     </div>
   </div>
@@ -12,14 +12,14 @@
       <mat-card class="container">
         <mat-card-title>
           <div *ngIf="amount > 1; else single">
-            Listing all {{amount}} Y{{year}} students who have taken {{course}}
+            Listing all {{amount}} Y{{year}} students who have not taken {{course}}
           </div>
           <ng-template #single>
             <div *ngIf="amount === 1; else zero">
-              Listing one Y{{year}} student who has taken {{course}}
+              Listing one Y{{year}} student who has not taken {{course}}
             </div>
-            <ng-template>
-              No Y{{year}} students have taken {{course}}
+            <ng-template #zero>
+              No Y{{year}} students have not taken {{course}}
             </ng-template>
           </ng-template>
           <span fxFlex></span>

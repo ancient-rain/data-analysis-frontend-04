@@ -15,7 +15,7 @@ import { Term } from '../../models/term';
   styleUrls: ['./student-term-info.component.css']
 })
 export class StudentTermInfoComponent implements OnInit {
-  private termId = 'SWITCH_TERM';
+
   student: Student;
   username: string;
   term: string;
