@@ -1,42 +1,49 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <mat-card class="container">
-          <mat-card-title>
-              Listing all {{amount}} students who have not taken {{course}}
-            <span fxFlex></span>
-            <mat-radio-group fxLayout="row" fxLayoutAlign="end start">
-              <div *ngFor="let val of radioVals">
-                <mat-radio-button [value]="val" [checked]="isCurrentRoute(val)" (click)="switchYear(val)">{{val}}</mat-radio-button>
-              </div>
-            </mat-radio-group>
-          </mat-card-title>
-          <mat-card-content *ngIf="amount > 0">
-            <table class="table">
-              <thead>
-                <tr class="headers">
-                  <th>Name</th>
-                  <th>Username</th>
-                  <th>Major</th>
-                  <th>Year</th>
-                  <th>Advisor</th>
-                </tr>
-                <tr *ngFor="let student of students">
-                  <th>{{student.name}}</th>
-                  <th>
-                    <a [routerLink]="['/student', student.username, student.term]">{{student.username}}</a>
-                  </th>
-                  <th>{{student.major}}</th>
-                  <th>{{student.year}}</th>
-                  <th>
-                    <a [routerLink]="['/faculty', student.advisor, student.term]">{{student.advisor}}</a>
-                  </th>
-                </tr>
-              </thead>
-            </table>
-          </mat-card-content>
-        </mat-card>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="terms" fxLayout="row" fxLayoutAlign="space-around center">
+        <button mat-raised-button color="accent" [routerLink]="['/course', course, '201630']">View {{course}} Info</button>
+        <button mat-raised-button color="accent" (click)="switchView()">Switch to Taken Page</button>
       </div>
     </div>
   </div>
-  
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card class="container">
+        <mat-card-title>
+          Listing all {{amount}} students who have not taken {{course}}
+          <span fxFlex></span>
+          <mat-radio-group fxLayout="row" fxLayoutAlign="end start">
+            <div *ngFor="let val of radioVals">
+              <mat-radio-button [value]="val" [checked]="isCurrentRoute(val)" (click)="switchYear(val)">{{val}}</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </mat-card-title>
+        <mat-card-content *ngIf="amount > 0">
+          <table class="table">
+            <thead>
+              <tr class="headers">
+                <th>Name</th>
+                <th>Username</th>
+                <th>Major</th>
+                <th>Year</th>
+                <th>Advisor</th>
+              </tr>
+              <tr *ngFor="let student of students">
+                <th>{{student.name}}</th>
+                <th>
+                  <a [routerLink]="['/student', student.username, student.term]">{{student.username}}</a>
+                </th>
+                <th>{{student.major}}</th>
+                <th>{{student.year}}</th>
+                <th>
+                  <a [routerLink]="['/faculty', student.advisor, student.term]">{{student.advisor}}</a>
+                </th>
+              </tr>
+            </thead>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

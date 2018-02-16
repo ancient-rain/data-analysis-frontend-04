@@ -42,6 +42,10 @@ export class CourseNotTakenYearComponent implements OnInit {
     }
   }
 
+  switchView() {
+    this.router.navigate(['/course', this.course, 'students-taken', this.year]);
+  }
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.course = params['name'];

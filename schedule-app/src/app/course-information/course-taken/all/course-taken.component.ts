@@ -33,6 +33,10 @@ export class CourseTakenComponent implements OnInit {
     }
   }
 
+  switchView() {
+    this.router.navigate(['/course', this.course, 'students-not-taken', 'all']);
+  }
+
   loadStudents() {
     this.courseService.getCourseTakenInfoAll(this.course)
       .subscribe(students => {
