@@ -16,7 +16,6 @@ export class CourseStudentInfoComponent implements OnInit {
       // Defaults to 0 if no query param provided.
       this.students = params['students'];
     });
-    console.log(`Students: ${this.students}`);
    }
 
 

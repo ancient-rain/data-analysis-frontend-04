@@ -2,7 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Course } from '../../models/course';
+import { Courses } from '../../models/courses';
 import { CourseService } from '../../services/course.service';
 import { Faculty } from '../../models/faculty';
 import { FilterDataService } from '../../services/filter-data.service';
@@ -19,14 +19,15 @@ export class SingleCourseInfoComponent implements OnInit {
   private coursesUrl = '/course/:name/:term';
   name: string;
   term: string;
-  course: Course;
+  course: Courses;
   schedule: Map<string, string> = new Map<string, string>();
   days: string[];
   hours: number[];
   finalLength: number;
-  previousTerm: Term;
-  curTerm: Term;
-  nextTerm: Term;
+  previousTerm: string;
+  curTerm: string;
+  nextTerm: string;
+  students;
 
   constructor(private courseService: CourseService,
     private filterService: FilterDataService,
@@ -38,18 +39,17 @@ export class SingleCourseInfoComponent implements OnInit {
   }
 
   loadCourse() {
-    this.courseService.getSingleCourseTermInfo(this.name, this.term)
+    this.courseService.getCoursesTermInfo(this.name, this.term)
       .subscribe(course => {
         const data = course[0];
-        const classTime = this.filterService.getClassTime(data);
 
-        data.filteredTimes = classTime;
-        this.course = course;
-        this.previousTerm = new Term('', '', '', '', '');
-        this.curTerm = new Term('', '', '', '', '');
-        this.nextTerm = new Term('', '', '', '', '');
-
-        this.updateTerms(data.terms, data.term);
+        this.course = data;
+        console.log(data.instructor.username);
+        this.students = data.students;
+        this.previousTerm = '';
+        this.curTerm = '';
+        this.nextTerm = '';
+        this.updateTerms(data.terms, data.term[0]);
       },
         err => {
           this.router.navigate(['not-found']);
@@ -58,8 +58,8 @@ export class SingleCourseInfoComponent implements OnInit {
 
   updateTerms(terms, term) {
     for (let i = 0; i < terms.length; i++) {
-      if (terms[i].term === term) {
-        this.curTerm = terms[i];
+      if (terms[i] === term.term) {
+        this.curTerm = term.name;
         this.setPreviousTerm(terms, i);
         this.setNextTerm(terms, i);
         break;
