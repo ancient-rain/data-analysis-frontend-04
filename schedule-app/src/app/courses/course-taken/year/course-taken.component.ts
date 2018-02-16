@@ -26,7 +26,6 @@ export class CourseTakenYearComponent implements OnInit {
             .subscribe(students => {
                 this.students = students;
                 this.amount = students.length;
-                console.log(students.length);
             });
     }
 
