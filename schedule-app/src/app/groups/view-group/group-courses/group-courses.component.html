@@ -1,26 +1,33 @@
-<mat-card>
-  <mat-card-content>
-    <table class="table">
-      <thead>
-        <tr class="headers">
-          <th>Course</th>
-          <th>Description</th>
-          <th>Instructor</th>
-          <th>Credit</th>
-          <th>Term Schedule</th>
-        </tr>
-        <tr *ngFor="let course of group.courses">
-          <th>
-            <a [routerLink]="['/course', course.name, term]">{{course.name}}</a>
-          </th>
-          <th>{{course.description}}</th>
-          <th>
-            <a [routerLink]="['/faculty', course.instructor, term]">{{course.instructor}}</a>
-          </th>
-          <th>{{course.creditHours}}</th>
-          <th>{{course.filteredTimes}}</th>
-        </tr>
-      </thead>
-    </table>
-  </mat-card-content>
-</mat-card>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Course Information for Group Members
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card-content>
+      <table class="table">
+        <thead>
+          <tr class="headers">
+            <th>Course</th>
+            <th>Description</th>
+            <th>Instructor</th>
+            <th>Credit</th>
+            <th>Term Schedule</th>
+          </tr>
+          <tr *ngFor="let course of group.courses">
+            <th>
+              <a [routerLink]="['/course', course.name, term]">{{course.name}}</a>
+            </th>
+            <th>{{course.description}}</th>
+            <th>
+              <a [routerLink]="['/faculty', course.instructor, term]">{{course.instructor}}</a>
+            </th>
+            <th>{{course.creditHours}}</th>
+            <th>{{course.filteredTimes}}</th>
+          </tr>
+        </thead>
+      </table>
+    </mat-card-content>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -82,7 +82,7 @@ export class FilterDataService {
         return classStr === '/' ? 'TBA' : classStr;
     }
 
-    updateSchedule(schedule: Map<string, string>, courses: Course[]) {
+    updateSchedule(schedule: Map<string, any[]>, courses: Course[]) {
         for (let i = 0; i < courses.length; i++) {
             const meetTimes = courses[i].meetTimes.replace(/  /g, ' ');
             const times = meetTimes.split(' ');
@@ -105,7 +105,7 @@ export class FilterDataService {
         }
     }
 
-    addClass(schedule: Map<string, string>, days: string, name: string, start: number, end: number) {
+    addClass(schedule: Map<string, any[]>, days: string, name: string, start: number, end: number) {
         for (let i = 0; i < days.length; i++) {
             const day = this.getDay(days.charAt(i));
             let isStarted = false;
@@ -113,15 +113,27 @@ export class FilterDataService {
             for (let j = 0; j < this.hours.length; j++) {
                 const curHour = this.hours[j];
                 if (start <= curHour && !isStarted) {
-                    schedule.set(`${day}-${curHour}`, `${name}`);
+                    this.addClassToSchedule(schedule, day, curHour, name);
                     isStarted = true;
                 } else if (end >= curHour && isStarted) {
-                    schedule.set(`${day}-${curHour}`, `${name}`);
+                    this.addClassToSchedule(schedule, day, curHour, name);
                 } else if (end <= curHour && isStarted) {
                     break;
                 }
             }
         }
+    }
+
+    addClassToSchedule(schedule: Map<string, any[]>, day, curHour, name) {
+        const key = `${day}-${curHour}`;
+        let value = schedule.get(key);
+
+        if (!value) {
+            value = [];
+        }
+
+        value.push(name);
+        schedule.set(`${day}-${curHour}`, value);
     }
 
     getDay(day: string) {

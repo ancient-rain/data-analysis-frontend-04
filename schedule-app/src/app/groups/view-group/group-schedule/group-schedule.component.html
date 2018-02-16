@@ -1,8 +1,10 @@
 <mat-card>
+  <div fxLayout="row" fxLayoutAlign="space-around start" class="boxes">
+    <div *ngFor="let student of students">
+      <mat-checkbox mat-checkbox-checked (change)="toggle($event, student)" [id]="student" checked=true>{{student}}</mat-checkbox>
+    </div>
+  </div>
   <mat-card-content>
-    <p fxLayout="row" fxLayoutAlign="center center">
-      Available time to meet = <mat-icon class="open" style="margin-left: 5px">thumb_up</mat-icon>
-    </p>
     <table class="table">
       <thead>
         <tr class="times">
@@ -30,8 +32,18 @@
         </tr>
         <tr *ngFor="let day of days">
           <th class="day">{{day}}</th>
-          <th *ngFor="let hour of hours">
-            <mat-icon *ngIf="!hasValue(day, hour)" class="open">thumb_up</mat-icon>
+          <th *ngFor="let hour of hours" class="available" [class.unavailable]="isUnvailable(day, hour)">
+            <div *ngIf="hasValueForTime(day, hour); else open">
+              <div *ngFor="let class of classes">
+                <div *ngIf="hasMemberForClass(class)">
+                  <div *ngFor="let member of members">
+                    <div *ngIf="isChecked(member)">
+                      {{member}} in {{class}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </th>
         </tr>
       </thead>
