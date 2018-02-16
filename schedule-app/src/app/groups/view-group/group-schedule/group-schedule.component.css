@@ -12,10 +12,10 @@
   width: 300px;
 }
 
-.open {
-  color: green; 
+.available {
+  background-color: #aed581;
 }
 
-.closed {
-  color: red; 
+.unavailable {
+  background-color:#e57373; 
 }

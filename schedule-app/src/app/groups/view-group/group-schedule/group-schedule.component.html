@@ -27,8 +27,8 @@
         </tr>
         <tr *ngFor="let day of days">
           <th class="day">{{day}}</th>
-          <th *ngFor="let hour of hours">
-            <div *ngIf="hasValueForTime(day, hour)">
+          <th *ngFor="let hour of hours" class="available" [class.unavailable]="isUnvailable(day, hour)">
+            <div *ngIf="hasValueForTime(day, hour); else open">
               <div *ngFor="let class of classes">
                 <div *ngIf="hasMemberForClass(class)">
                   <div *ngFor="let student of students">
