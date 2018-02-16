@@ -5,16 +5,21 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from '../app-routing.module';
 import { CourseInformationComponent } from './course-information.component';
 import { CourseService } from '../services/course.service';
-import { CourseFacultyInfoComponent } from './course-faculty-info/course-faculty-info.component';
-import { CourseStudentInfoComponent } from './course-student-info/course-student-info.component';
-import { SingleCourseInfoComponent } from './single-course-info/single-course-info.component';
-import { CourseTakenComponent } from './course-taken/course-taken.component';
-import { CourseNotTakenComponent } from './course-not-taken/course-not-taken.component';
+import {
+  CourseFacultyInfoComponent,
+  CourseStudentInfoComponent,
+  SingleCourseInfoComponent,
+  CourseTakenComponent,
+  CourseTakenYearComponent,
+  CourseNotTakenComponent,
+  CourseNotTakenYearComponent
+} from './index';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    AppMaterialModule, /* material html won't work without importing in this module */
+    AppMaterialModule,
     FlexLayoutModule,
     AppRoutingModule
   ],
@@ -24,7 +29,9 @@ import { CourseNotTakenComponent } from './course-not-taken/course-not-taken.com
       CourseStudentInfoComponent,
       SingleCourseInfoComponent,
       CourseTakenComponent,
-      CourseNotTakenComponent
+      CourseTakenYearComponent,
+      CourseNotTakenComponent,
+      CourseNotTakenYearComponent
   ],
   providers: [
     CourseService

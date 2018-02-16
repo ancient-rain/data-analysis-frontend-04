@@ -17,9 +17,14 @@ import {
     CreateGroupComponent,
     ViewGroupComponent
 } from './groups/index';
-import { CourseStudentInfoComponent } from './course-information/course-student-info/course-student-info.component';
-import { CourseTakenComponent } from './course-information/course-taken/course-taken.component';
-import { CourseNotTakenComponent } from './course-information/course-not-taken/course-not-taken.component';
+import {
+    CourseStudentInfoComponent,
+    CourseTakenComponent,
+    CourseTakenYearComponent,
+    CourseNotTakenComponent,
+    CourseNotTakenYearComponent
+} from './course-information/index';
+
 
 const routes: Routes = [
     {
@@ -67,15 +72,27 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'courses/:name/students/taken/:term',
+        path: 'course/:name/students-taken/all',
         pathMatch: 'full',
         component: CourseTakenComponent,
         canActivate: [AuthGuard]
     },
     {
-        path: 'courses/:name/students/not-taken/:term',
+        path: 'course/:name/students-taken/:year',
+        pathMatch: 'full',
+        component: CourseTakenYearComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'course/:name/students-not-taken/all',
         pathMatch: 'full',
         component: CourseNotTakenComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'course/:name/students-not-taken/:year',
+        pathMatch: 'full',
+        component: CourseNotTakenYearComponent,
         canActivate: [AuthGuard]
     },
     {
