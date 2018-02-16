@@ -1,0 +1,33 @@
+<form [formGroup]="courseForm" (ngSubmit)="search(courseForm.value)">
+  <mat-card>
+    <mat-card-title>
+      Search for a Course
+    </mat-card-title>
+    <mat-card-content>
+      <mat-input-container dividerColor="accent">
+        <input matInput placeholder="Course Name" type="text" formControlName="course">
+        <mat-hint>
+          <span [hidden]="courseForm.controls.course.valid || courseForm.controls.course.pristine">
+            A course name is required.
+          </span>
+        </mat-hint>
+      </mat-input-container>
+      <mat-input-container dividerColor="accent">
+        <mat-select placeholder="Term" formControlName="term">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let term of terms" [value]="term">
+            {{term}}
+          </mat-option>
+        </mat-select>
+        <mat-hint>
+          <span [hidden]="courseForm.controls.term.valid || courseForm.controls.term.pristine">
+            You must select a term.
+          </span>
+        </mat-hint>
+      </mat-input-container>
+    </mat-card-content>
+    <mat-card-actions style="margin-right:0;margin-left:0;">
+      <button mat-raised-button class="mat-accent" [disabled]="!courseForm.valid">Search</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
