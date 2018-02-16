@@ -1,4 +1,4 @@
-import { Component, Input, group } from '@angular/core';
+import { Component, Input, group, OnInit } from '@angular/core';
 import { Group } from '../../../models/group';
 
 @Component({
@@ -6,21 +6,34 @@ import { Group } from '../../../models/group';
     templateUrl: './group-schedule.component.html',
     styleUrls: ['./group-schedule.component.css']
 })
-export class GroupScheduleComponent {
+export class GroupScheduleComponent implements OnInit {
     @Input() group: Group;
     @Input() days: [string];
     @Input() hours: [string];
-    @Input() schedule: Map<string, string>;
-    curVal: string;
+    @Input() schedule: Map<string, any[]>;
+    @Input() courseMap: Map<string, any[]>;
+    classes: any[];
+    students: any[];
 
     constructor() {
-        this.curVal = '';
+        this.classes = [];
     }
 
-    hasValue(day: string, hour: string) {
+    hasValueForTime(day: string, hour: string) {
         const key = `${day}-${hour}`;
-        this.curVal = this.schedule.get(key);
-        return this.curVal ? true : false;
+        this.classes = this.schedule.get(key);
+        return this.classes;
+    }
+
+    hasMemberForClass(className: string) {
+        this.students = this.courseMap.get(className);
+        return this.students;
+    }
+
+    ngOnInit() {
+        console.log(this.schedule);
+        console.log(this.courseMap);
+        console.log(this.courseMap['CSSE230-01']);
     }
 
 }

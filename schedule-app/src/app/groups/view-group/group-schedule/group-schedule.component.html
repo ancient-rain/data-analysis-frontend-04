@@ -1,8 +1,5 @@
 <mat-card>
   <mat-card-content>
-    <p fxLayout="row" fxLayoutAlign="center center">
-      Available time to meet = <mat-icon class="open" style="margin-left: 5px">thumb_up</mat-icon>
-    </p>
     <table class="table">
       <thead>
         <tr class="times">
@@ -31,7 +28,15 @@
         <tr *ngFor="let day of days">
           <th class="day">{{day}}</th>
           <th *ngFor="let hour of hours">
-            <mat-icon *ngIf="!hasValue(day, hour)" class="open">thumb_up</mat-icon>
+            <div *ngIf="hasValueForTime(day, hour)">
+              <div *ngFor="let class of classes">
+                <div *ngIf="hasMemberForClass(class)">
+                  <div *ngFor="let student of students">
+                    {{student}} in {{class}}
+                  </div>
+                </div>
+              </div>
+            </div>
           </th>
         </tr>
       </thead>

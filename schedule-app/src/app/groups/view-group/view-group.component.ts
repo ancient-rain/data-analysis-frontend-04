@@ -14,7 +14,8 @@ export class ViewGroupComponent implements OnInit {
     group: Group;
     id: string;
     term: string;
-    schedule: Map<string, string>;
+    schedule: Map<string, any[]>;
+    courseMap: Map<string, any[]>;
     days: string[];
     hours: number[];
     finalLength: number;
@@ -34,10 +35,12 @@ export class ViewGroupComponent implements OnInit {
 
             this.group = group;
             this.term = data.term;
-            this.schedule = new Map<string, string>();
+            this.schedule = new Map<string, any[]>();
+            this.courseMap = new Map<string, any[]>();
 
             this.filterClasses(data);
             this.filterService.updateSchedule(this.schedule, data.courses);
+            this.createCourseMap(data.students, data.courses);
         });
     }
 
@@ -46,6 +49,22 @@ export class ViewGroupComponent implements OnInit {
             const course = data.courses[i];
             const classTime = this.filterService.getClassTime(course);
             course.filteredTimes = classTime;
+        }
+    }
+
+    createCourseMap(students, courses) {
+        for (let i = 0; i < courses.length; i++) {
+            this.courseMap.set(courses[i].name, []);
+        }
+
+        for (let i = 0; i < students.length; i++) {
+            const student = students[i];
+            for (let j = 0; j < student.courses.length; j++) {
+                const course = student.courses[j];
+                const value = this.courseMap.get(course);
+                value.push(student.username);
+                this.courseMap.set(course, value);
+            }
         }
     }
 
