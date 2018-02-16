@@ -20,7 +20,7 @@
                 </th>
                 <th>{{course.description}}</th>
                 <th>
-                  <a [routerLink]="['/faculty', course.instructor, term]">{{course.instructor}}</a>
+                  <a [routerLink]="['/faculty', course.instructor, term]">{{course.instructor.username}}</a>
                 </th>
                 <th>{{course.creditHours}}</th>
                 <th>{{course.numStudents}}</th>
