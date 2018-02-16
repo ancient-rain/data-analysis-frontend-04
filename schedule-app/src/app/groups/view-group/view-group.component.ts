@@ -19,6 +19,7 @@ export class ViewGroupComponent implements OnInit {
     days: string[];
     hours: number[];
     finalLength: number;
+    students = [];
 
     constructor(private groupService: GroupService,
         private filterService: FilterDataService,
@@ -41,6 +42,7 @@ export class ViewGroupComponent implements OnInit {
             this.filterClasses(data);
             this.filterService.updateSchedule(this.schedule, data.courses);
             this.createCourseMap(data.students, data.courses);
+            this.updateStudents(data.students);
         });
     }
 
@@ -65,6 +67,12 @@ export class ViewGroupComponent implements OnInit {
                 value.push(student.username);
                 this.courseMap.set(course, value);
             }
+        }
+    }
+
+    updateStudents(members) {
+        for (let i = 0; i < members.length; i++) {
+            this.students.push(members[i].username);
         }
     }
 

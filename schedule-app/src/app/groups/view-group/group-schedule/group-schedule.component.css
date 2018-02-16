@@ -19,3 +19,11 @@
 .unavailable {
   background-color:#e57373; 
 }
+
+.mat-checkbox {
+  font-size: 16px;
+}
+
+.boxes {
+  margin-bottom: 10px;
+}
