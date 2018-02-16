@@ -28,6 +28,7 @@ export class AuthService {
 
       localStorage.setItem('token', rfUser.token);
       localStorage.setItem('name', rfUser.name);
+      localStorage.setItem('my-username', rfUser.username.toUpperCase());
 
       this.user.email = rfUser.email;
       this.user.group = rfUser.group;
@@ -46,6 +47,7 @@ export class AuthService {
   signOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('name');
+    localStorage.removeItem('my-username');
 
     this.user = {
       email: '',
@@ -76,6 +78,18 @@ export class AuthService {
 
   getUsername() {
     return this.user.username;
+  }
+
+  getMyUsername() {
+    if (localStorage.getItem('my-username')) {
+      return `${localStorage.getItem('my-username')}`;
+    }
+    return '/';
+  }
+
+  checkUsername(username) {
+    console.log(localStorage.getItem('my-username'), username);
+    return localStorage.getItem('my-username') === username;
   }
 
 }

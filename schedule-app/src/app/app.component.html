@@ -13,7 +13,7 @@
     <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
         <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/']">Home</a>
-        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/student', authService.getUsername()]">My Courses</a>
+        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/student', authService.getMyUsername()]">My Courses</a>
         <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/create-group']">Create a Group</a>
         <a mat-list-item (click)="sidenav.toggle();authService.signOut();" style="color: inherit; text-decoration: none;">Sign Out</a>
       </mat-nav-list>

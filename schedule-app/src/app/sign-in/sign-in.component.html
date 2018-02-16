@@ -4,7 +4,7 @@
             <h2>Welcome</h2>
         </mat-card-title>
         <mat-card-content fxLayout="column" fxLayoutAlign="none center">
-            <button mat-raised-button (click)="authService.signIn()">
+            <button mat-raised-button color="accent" (click)="authService.signIn()">
                 Sign In
             </button>
             <br />
@@ -17,7 +17,7 @@
                 <h2>Signed in as {{authService.getName()}}</h2>
             </mat-card-title>
             <mat-card-content fxLayout="column" fxLayoutAlign="none center">
-                <button mat-raised-button (click)="authService.signOut()">
+                <button mat-raised-button color="accent" (click)="authService.signOut()">
                     Sign Out
                 </button>
             </mat-card-content>

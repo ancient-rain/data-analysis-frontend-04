@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 import { Faculty } from '../../../models/faculty';
 import { Student } from '../../../models/student';
 
@@ -11,10 +12,6 @@ import { Student } from '../../../models/student';
 export class FacultyAdviseesComponent {
   @Input() faculty: Faculty;
 
-  constructor(private router: Router) { }
-
-  openStudentTermInfo(student: Student) {
-    this.router.navigate(['student', student.username, student.term]);
-  }
+  constructor(private authService: AuthService, private router: Router) { }
 
 }

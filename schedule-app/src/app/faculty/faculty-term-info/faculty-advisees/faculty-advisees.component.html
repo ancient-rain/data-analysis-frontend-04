@@ -1,4 +1,4 @@
-<mat-accordion *ngIf="faculty.advisees.length > 0">
+<mat-accordion *ngIf="faculty.advisees.length > 0 && authService.checkUsername(faculty.username)">
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -16,7 +16,7 @@
         </tr>
         <tr *ngFor="let advisee of faculty.advisees">
           <th>
-            <a (click)="openStudentTermInfo(advisee);">{{advisee.username}}</a>
+            <a [routerLink]="['/student', advisee.username, advisee.term]">{{advisee.username}}</a>
           </th>
           <th>{{advisee.name}}</th>
           <th>{{advisee.majors}}</th>
