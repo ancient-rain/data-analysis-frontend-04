@@ -8,7 +8,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from '../app-routing.module';
 import { SearchComponent } from './search.component';
 import {
-    MemberSearchComponent
+    MemberSearchComponent,
+    CourseSearchComponent
 } from './index';
 
 @NgModule({
@@ -23,10 +24,12 @@ import {
     declarations: [
         SearchComponent,
         MemberSearchComponent,
+        CourseSearchComponent
     ],
     exports: [
         SearchComponent,
         MemberSearchComponent,
+        CourseSearchComponent
     ]
 })
 export class SearchModule { }
