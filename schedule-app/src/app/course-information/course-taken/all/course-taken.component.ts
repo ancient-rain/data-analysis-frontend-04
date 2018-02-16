@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from '../../services/student.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Student } from '../../models/student';
+import { CourseService } from '../../../services/course.service';
+import { Student } from '../../../models/student';
+import { StudentInfo } from '../../../models/student-info';
 
 @Component({
   selector: 'app-course-taken',
@@ -12,16 +13,16 @@ export class CourseTakenComponent implements OnInit {
 
   course: String;
   term: String;
-  students: [Student];
+  students: StudentInfo[];
 
   loadStudents() {
-    this.studentService.getCourseTakenInfo(this.course, this.term)
-    .subscribe(students => {
-      this.students = students;
-    });
+    this.courseService.getCourseTakenInfoAll(this.course)
+      .subscribe(students => {
+        this.students = students;
+      });
   }
 
-  constructor(private studentService: StudentService,
+  constructor(private courseService: CourseService,
     private router: Router,
     private route: ActivatedRoute) {
   }
