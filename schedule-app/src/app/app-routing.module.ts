@@ -3,7 +3,7 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { BadRequestComponent } from './bad-request/bad-request.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-// import { CourseInformationComponent } from './course-information/course-information.component';
+import { CourseComponent } from './courses/courses.component';
 // import { SingleCourseInfoComponent } from './course-information/single-course-info/single-course-info.component';
 import { SearchComponent } from './search/search.component';
 import {
@@ -53,12 +53,12 @@ const routes: Routes = [
         pathMatch: 'full',
         component: BadRequestComponent
     },
-    // {
-    //     path: 'course/:name/:term',
-    //     pathMatch: 'full',
-    //     component: SingleCourseInfoComponent,
-    //     canActivate: [AuthGuard]
-    // },
+    {
+        path: 'course/:name/:term',
+        pathMatch: 'full',
+        component: CourseComponent,
+        canActivate: [AuthGuard]
+    },
     {
         path: 'faculty/:username/:term',
         pathMatch: 'full',
