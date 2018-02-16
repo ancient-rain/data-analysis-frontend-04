@@ -18,7 +18,7 @@ export class FacultyTermInfoComponent implements OnInit {
   faculty: Faculty;
   username: string;
   term: string;
-  schedule: Map<string, string>;
+  schedule: Map<string, any[]>;
   days: string[];
   hours: number[];
   finalLength: number;
@@ -43,7 +43,7 @@ export class FacultyTermInfoComponent implements OnInit {
 
         this.faculty = faculty;
         this.groups = data.groups;
-        this.schedule = new Map<string, string>();
+        this.schedule = new Map<string, any[]>();
         this.previousTerm = new Term('', '', '', '', '');
         this.curTerm = new Term('', '', '', '', '');
         this.nextTerm = new Term('', '', '', '', '');

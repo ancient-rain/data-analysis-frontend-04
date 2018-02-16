@@ -14,18 +14,17 @@ import { FacultyModule } from './faculty/faculty.module';
 import { GroupsModule } from './groups/group.module';
 import { BadRequestModule } from './bad-request/bad-request.module';
 import { SignInModule } from './sign-in/sign-in.module';
+import { SearchModule } from './search/search.module';
 
 import { AuthGuard } from './guards/auth.guard';
 
 import { AuthService } from './services/auth.service';
 import { EmitterService } from './services/emitter.service';
-import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +40,8 @@ import { SearchComponent } from './search/search.component';
     FacultyModule,
     GroupsModule,
     BadRequestModule,
-    SignInModule
+    SignInModule,
+    SearchModule
   ],
   providers: [
     AuthGuard,
