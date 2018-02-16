@@ -71,7 +71,7 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'course/:name/students-taken',
+        path: 'course/:name/students-taken/all',
         pathMatch: 'full',
         component: CourseTakenComponent,
         canActivate: [AuthGuard]

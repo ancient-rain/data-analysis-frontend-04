@@ -26,7 +26,7 @@ export class CourseService {
   }
 
   getCourseTakenInfoAll(course: String): Observable<[StudentInfo]> {
-    const url = `${this.domainUrl}/course/${course}/students-taken`;
+    const url = `${this.domainUrl}/course/${course}/students-taken/all`;
     return this.http.get<StudentInfo>(url)
       .catch((error: any) =>
         Observable.throw(error.json().error || 'Server error'));
@@ -40,7 +40,7 @@ export class CourseService {
   }
 
   getCourseNotTakenInfo(course: String): Observable<[StudentInfo]> {
-    const url = `${this.domainUrl}/course/${course}/students-not-taken`;
+    const url = `${this.domainUrl}/course/${course}/students-not-taken/all`;
     return this.http.get<StudentInfo>(url)
       .catch((error: any) =>
         Observable.throw(error.json().error || 'Server error'));

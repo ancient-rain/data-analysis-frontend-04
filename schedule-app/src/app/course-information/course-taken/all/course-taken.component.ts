@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CourseService } from '../../../services/course.service';
-import { Student } from '../../../models/student';
 import { StudentInfo } from '../../../models/student-info';
 
 @Component({
@@ -12,13 +11,15 @@ import { StudentInfo } from '../../../models/student-info';
 export class CourseTakenComponent implements OnInit {
 
   course: String;
-  term: String;
   students: StudentInfo[];
+  amount: number;
+  radioVals = ['All', 'Y1', 'Y2', 'Y3', 'Y4', 'Y5', 'Y6'];
 
   loadStudents() {
     this.courseService.getCourseTakenInfoAll(this.course)
       .subscribe(students => {
         this.students = students;
+        this.amount = students.length;
       });
   }
 
@@ -27,10 +28,22 @@ export class CourseTakenComponent implements OnInit {
     private route: ActivatedRoute) {
   }
 
+  isCurrentRoute(value) {
+    return this.radioVals[0] === value;
+  }
+
+  switchYear(value) {
+    if (value === 'All') {
+      this.router.navigate(['/course', this.course, 'students-taken', 'all']);
+    } else {
+      const val = value.toString().substring(1);
+      this.router.navigate(['/course', this.course, 'students-taken', val]);
+    }
+  }
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.course = params['name'];
-      this.term = params['term'];
       this.loadStudents();
     });
   }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CourseService } from '../../../services/course.service';
-import { Student } from '../../../models/student';
 import { StudentInfo } from '../../../models/student-info';
 
 @Component({
@@ -36,7 +35,7 @@ export class CourseTakenYearComponent implements OnInit {
 
   switchYear(value) {
     if (value === 'All') {
-      console.log('show all');
+      this.router.navigate(['/course', this.course, 'students-taken', 'all']);
     } else {
       const val = value.toString().substring(1);
       this.router.navigate(['/course', this.course, 'students-taken', val]);
