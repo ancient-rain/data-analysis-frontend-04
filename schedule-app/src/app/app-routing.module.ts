@@ -21,7 +21,8 @@ import {
     CourseStudentInfoComponent,
     CourseTakenComponent,
     CourseTakenYearComponent,
-    CourseNotTakenComponent
+    CourseNotTakenComponent,
+    CourseNotTakenYearComponent
 } from './course-information/index';
 
 
@@ -82,30 +83,18 @@ const routes: Routes = [
         component: CourseTakenYearComponent,
         canActivate: [AuthGuard]
     },
-    // {
-    //     path: 'course/:name/students-not-taken',
-    //     pathMatch: 'full',
-    //     component: CourseNotTakenComponent,
-    //     canActivate: [AuthGuard]
-    // },
-    // {
-    //     path: 'course/:name/students-not-taken/:year',
-    //     pathMatch: 'full',
-    //     component: CourseNotTakenYearComponent,
-    //     canActivate: [AuthGuard]
-    // },
-    // {
-    //     path: 'courses/:name/students/taken/:term',
-    //     pathMatch: 'full',
-    //     component: CourseTakenComponent,
-    //     canActivate: [AuthGuard]
-    // },
-    // {
-    //     path: 'courses/:name/students/not-taken/:term',
-    //     pathMatch: 'full',
-    //     component: CourseNotTakenComponent,
-    //     canActivate: [AuthGuard]
-    // },
+    {
+        path: 'course/:name/students-not-taken/all',
+        pathMatch: 'full',
+        component: CourseNotTakenComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'course/:name/students-not-taken/:year',
+        pathMatch: 'full',
+        component: CourseNotTakenYearComponent,
+        canActivate: [AuthGuard]
+    },
     {
         path: 'student/:username/:term',
         pathMatch: 'full',

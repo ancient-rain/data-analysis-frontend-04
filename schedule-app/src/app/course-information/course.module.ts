@@ -11,7 +11,8 @@ import {
   SingleCourseInfoComponent,
   CourseTakenComponent,
   CourseTakenYearComponent,
-  CourseNotTakenComponent
+  CourseNotTakenComponent,
+  CourseNotTakenYearComponent
 } from './index';
 
 
@@ -29,7 +30,8 @@ import {
       SingleCourseInfoComponent,
       CourseTakenComponent,
       CourseTakenYearComponent,
-      CourseNotTakenComponent
+      CourseNotTakenComponent,
+      CourseNotTakenYearComponent
   ],
   providers: [
     CourseService

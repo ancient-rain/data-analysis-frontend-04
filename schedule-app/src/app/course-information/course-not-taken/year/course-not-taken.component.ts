@@ -4,11 +4,11 @@ import { CourseService } from '../../../services/course.service';
 import { StudentInfo } from '../../../models/student-info';
 
 @Component({
-  selector: 'app-course-taken-year',
-  templateUrl: './course-taken-year.component.html',
-  styleUrls: ['./course-taken-year.component.css']
+  selector: 'app-course-not-taken-year',
+  templateUrl: './course-not-taken.component.html',
+  styleUrls: ['./course-not-taken.component.css']
 })
-export class CourseTakenYearComponent implements OnInit {
+export class CourseNotTakenYearComponent implements OnInit {
 
   course: String;
   year: String;
@@ -22,7 +22,7 @@ export class CourseTakenYearComponent implements OnInit {
   }
 
   loadStudents() {
-    this.courseService.getCourseTakenInfoYear(this.course, this.year)
+    this.courseService.getCourseNotTakenInfoYear(this.course, this.year)
       .subscribe(students => {
         this.students = students;
         this.amount = students.length;
@@ -35,10 +35,10 @@ export class CourseTakenYearComponent implements OnInit {
 
   switchYear(value) {
     if (value === 'All') {
-      this.router.navigate(['/course', this.course, 'students-taken', 'all']);
+      this.router.navigate(['/course', this.course, 'students-not-taken', 'all']);
     } else {
       const val = value.toString().substring(1);
-      this.router.navigate(['/course', this.course, 'students-taken', val]);
+      this.router.navigate(['/course', this.course, 'students-not-taken', val]);
     }
   }
 
@@ -49,5 +49,4 @@ export class CourseTakenYearComponent implements OnInit {
       this.loadStudents();
     });
   }
-
 }

@@ -15,14 +15,6 @@ export class CourseTakenComponent implements OnInit {
   amount: number;
   radioVals = ['All', 'Y1', 'Y2', 'Y3', 'Y4', 'Y5', 'Y6'];
 
-  loadStudents() {
-    this.courseService.getCourseTakenInfoAll(this.course)
-      .subscribe(students => {
-        this.students = students;
-        this.amount = students.length;
-      });
-  }
-
   constructor(private courseService: CourseService,
     private router: Router,
     private route: ActivatedRoute) {
@@ -39,6 +31,14 @@ export class CourseTakenComponent implements OnInit {
       const val = value.toString().substring(1);
       this.router.navigate(['/course', this.course, 'students-taken', val]);
     }
+  }
+
+  loadStudents() {
+    this.courseService.getCourseTakenInfoAll(this.course)
+      .subscribe(students => {
+        this.students = students;
+        this.amount = students.length;
+      });
   }
 
   ngOnInit() {
