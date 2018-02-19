@@ -13,7 +13,10 @@
     <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
         <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/']">Home</a>
-        <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/student', authService.getMyUsername()]">My Courses</a>
+        <a mat-list-item *ngIf="authService.getGroup() === 'STUDENT'; else faculty" (click)="sidenav.toggle()" [routerLink]="['/student', authService.getMyUsername()]">My Courses</a>
+        <ng-template #faculty>
+          <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/faculty', authService.getMyUsername()]">My Courses</a>
+        </ng-template>
         <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/create-group']">Create a Group</a>
         <a mat-list-item (click)="sidenav.toggle()" href="https://prod11gbss8.rose-hulman.edu/BanSS/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu&msg=WELCOME+Feb+18,+201805%3A34+pm"
           target="_blank">Banner Web</a>
