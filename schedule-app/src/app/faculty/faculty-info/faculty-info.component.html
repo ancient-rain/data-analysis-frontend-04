@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row" *ngFor="let term of info">
+      <div class="col-md-12">
+        <mat-card>
+          <mat-card-title>
+            {{term.term[0].name}}
+          </mat-card-title>
+          <mat-card-content>
+            <table class="table">
+              <thead>
+                <tr class="headers">
+                  <th>Course</th>
+                  <th>Description</th>
+                  <th>Instructor</th>
+                  <th>Credit</th>
+                </tr>
+                <tr *ngFor="let course of term.courses">
+                  <th>
+                    <a [routerLink]="['/course', course.name, term.term[0].term]">{{course.name}}</a>
+                  </th>
+                  <th>{{course.description}}</th>
+                  <th>
+                    <a [routerLink]="['/faculty', course.instructor, term.term[0].term]">{{course.instructor}}</a>
+                  </th>
+                  <th>{{course.creditHours}}</th>
+                </tr>
+              </thead>
+            </table>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
