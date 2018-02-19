@@ -23,9 +23,9 @@ export class GroupService {
     const body = {
       groupName: group.groupName,
       term: group.term,
-      className: group.className,
-      faculty: group.faculty,
-      students: group.students
+      description: group.description,
+      forClass: group.forClass,
+      members: group.members
     };
     return this.http.post<PostGroup>(url, group)
       .catch((error: any) =>
