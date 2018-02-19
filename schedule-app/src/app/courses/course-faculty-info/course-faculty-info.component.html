@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-title>{{course.name}}</mat-card-title>
+  <mat-card-content>
+    <p>Username: {{course.instructor.username}}</p>
+    <p *ngIf="course.instructor.dept !== ''">Department: {{course.instructor.dept}}</p>
+    <a [routerLink]="['/course', course.name, 'students-taken', 'all']">Students Taken</a>
+    <br/>
+    <a [routerLink]="['/course', course.name, 'students-taken', 'all']">Students Not Taken</a>
+  </mat-card-content>
+</mat-card>

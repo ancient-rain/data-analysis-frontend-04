@@ -45,27 +45,22 @@
     <div class="col-md-3" *ngFor="let group of groups">
       <mat-card>
         <mat-card-title>
-          <a [routerLink]="['/groups', group._id]">{{group.groupName}}</a>
+          <a [routerLink]="['/group', group._id]">{{group.groupName}}</a>
         </mat-card-title>
         <mat-card-content>
           <p>For:
-            <a [routerLink]="['/course', group.className, term]">{{group.className}}</a>
+            <a *ngIf="group.forClass; else noClass" [routerLink]="['/course', group.description, term]">{{group.description}}</a>
+            <ng-template #noClass>
+              <p>{{group.description}}</p>
+            </ng-template>
           </p>
           <hr>
-          <p *ngIf="group.faculty.length === 1; else clients">Client:</p>
-          <ng-template #clients>
-            <p>Clients:</p>
-          </ng-template>
-          <p *ngFor="let client of group.faculty">
-            <a [routerLink]="['/faculty', client, term]">{{client}}</a>
-          </p>
-          <hr>
-          <p *ngIf="group.students.length === 1; else members">Members:</p>
-          <ng-template #members>
-            <p>Members:</p>
-          </ng-template>
-          <p *ngFor="let member of group.students">
-            <a [routerLink]="['/student', member, term]">{{member}}</a>
+          <p>Members:</p>
+          <p *ngFor="let member of group.members">
+            <a *ngIf="member.type === 'Student'; else faculty" [routerLink]="['/student', member.username, term]">{{member.username}}</a>
+            <ng-template #faculty>
+              <a [routerLink]="['/faculty', member.username, term]">{{member.username}}</a>
+            </ng-template>
           </p>
         </mat-card-content>
       </mat-card>

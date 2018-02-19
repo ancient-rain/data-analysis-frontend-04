@@ -1,0 +1,46 @@
+<form [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)">
+  <mat-card>
+    <mat-card-title>
+      Search for a Student or Faculty Member
+    </mat-card-title>
+    <mat-card-content>
+      <mat-input-container dividerColor="accent">
+        <input matInput placeholder="Username" type="text" formControlName="username">
+        <mat-hint>
+          <span [hidden]="searchForm.controls.username.valid || searchForm.controls.username.pristine">
+            A username is required.
+          </span>
+        </mat-hint>
+      </mat-input-container>
+      <mat-input-container dividerColor="accent">
+        <mat-select placeholder="Group" formControlName="group">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let group of groups" [value]="group">
+            {{group}}
+          </mat-option>
+        </mat-select>
+        <mat-hint>
+          <span [hidden]="searchForm.controls.group.valid || searchForm.controls.group.pristine">
+            You must select a group.
+          </span>
+        </mat-hint>
+      </mat-input-container>
+      <mat-input-container dividerColor="accent">
+        <mat-select placeholder="Term" formControlName="term">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let term of terms" [value]="term">
+            {{term}}
+          </mat-option>
+        </mat-select>
+        <mat-hint>
+          <span [hidden]="searchForm.controls.term.valid || searchForm.controls.term.pristine">
+            You must select a term.
+          </span>
+        </mat-hint>
+      </mat-input-container>
+    </mat-card-content>
+    <mat-card-actions style="margin-right:0;margin-left:0;">
+      <button mat-raised-button class="mat-accent" [disabled]="!searchForm.valid">Search</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

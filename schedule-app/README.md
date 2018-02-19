@@ -3,19 +3,23 @@ Trevor Bednarek and Caleb Henstein
 FEATURES COMPLETED:
 - All functional requirements requested in project document
 - Groups are also able to include faculty members
-
-FEATURES CURRENTLY UNDER DEVELOPMENT:
-- Ability to use the home page search form to search for courses (back-end completed, front-end in progress)
-- Ability to search for a list of students at once
+- Viewing different students schedules with checkboxes on the groups page
+- Filtering by the year or by all for students who have or haven't taken a course
+- Searching for coursees
 - Protecting advisee's list for faculty members (only allow faculty members to see advisee list)
 - Page that shows all of the course's the signed in student has taken
 
+FEATURES CURRENTLY UNDER DEVELOPMENT:
+- Ability to search for a list of students at once (back-end completed, front-end not implemented)
+
 FEATURES NOT STARTED:
-- none
+- Change creating group members to just be members instead of having a client and students
+- Adding Banner Web & Schedule Lookup links to sidenav bar
+
 
 KNOWN BUGS:
-- When having to list a large number of courses, the page lists the first few, then leaves empty spots for the rest.
-    Likely problem with the filtering done on the courses
+- Some of the pages that have to deal with retrieving the advisor information returns a 500 response
+ as it times out before the data is finished. We may need just to add an advisor field to the student to make life easier.
 
 
 

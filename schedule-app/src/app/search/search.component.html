@@ -3,17 +3,9 @@
     <div class="col-md-12">
       <mat-card>
         <mat-card-title>
-          Welcome to the new Schedule App!
+          <h2>Hello {{authService.getName()}}!</h2>
         </mat-card-title>
         <mat-card-content>
-          <p>
-            There are several tools at Rose-Hulman that present data in different ways. For example, the schedule lookup page, banner
-            web, course catalogs, and moodle have data on students, faculty, courses, terms, and schedule. However, all the
-            data is not collocated; thus it is challenging to perform simple analyses on the data and glean simple information
-            from the collective dataset. This website brings all that data together into one collective dataset and give
-            a user (e.g., department head, faculty, advisor, student) the ability to perform simple queries/analyses and
-            glean important information from the collective dataset.
-          </p>
           <p>
             To begin, use the side navigation bar or use the search functionality below. The side nagivagtion bar to go to view a list
             of your classes, create a group for one of the terms, and much more whereas the search functionality below will
@@ -25,62 +17,10 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <form [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)">
-        <mat-card>
-          <mat-card-title>
-            Search for a Student or Faculty
-          </mat-card-title>
-          <mat-card-content>
-            <mat-input-container dividerColor="accent">
-              <input matInput placeholder="Username" type="text" formControlName="username">
-              <mat-hint>
-                <span [hidden]="searchForm.controls.username.valid || searchForm.controls.username.pristine">
-                  A username is required.
-                </span>
-              </mat-hint>
-            </mat-input-container>
-            <mat-input-container dividerColor="accent">
-              <mat-select placeholder="Group" formControlName="group">
-                <mat-option></mat-option>
-                <mat-option *ngFor="let group of groups" [value]="group">
-                  {{group}}
-                </mat-option>
-              </mat-select>
-              <mat-hint>
-                <span [hidden]="searchForm.controls.group.valid || searchForm.controls.group.pristine">
-                  You must select a group.
-                </span>
-              </mat-hint>
-            </mat-input-container>
-            <mat-input-container dividerColor="accent">
-              <mat-select placeholder="Term" formControlName="term">
-                <mat-option></mat-option>
-                <mat-option *ngFor="let term of terms" [value]="term">
-                  {{term}}
-                </mat-option>
-              </mat-select>
-              <mat-hint>
-                <span [hidden]="searchForm.controls.term.valid || searchForm.controls.term.pristine">
-                  You must select a term.
-                </span>
-              </mat-hint>
-            </mat-input-container>
-          </mat-card-content>
-          <mat-card-actions style="margin-right:0;margin-left:0;">
-            <button mat-raised-button class="mat-primary" [disabled]="!searchForm.valid">Search</button>
-          </mat-card-actions>
-        </mat-card>
-      </form>
+      <app-member-search></app-member-search>
     </div>
     <div class="col-md-6">
-      <mat-card>
-        <mat-card-title>
-          Search for a Course
-        </mat-card-title>
-        <mat-card-content>
-          Coming soon...
-        </mat-card-content>
-      </mat-card>
+      <app-course-search></app-course-search>
     </div>
   </div>
 </div>

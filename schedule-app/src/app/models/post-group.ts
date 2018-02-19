@@ -4,8 +4,8 @@ export class PostGroup {
         public type: string,
         public groupName: string,
         public term: string,
-        public className: string,
-        public faculty: string[],
-        public students: string[]
+        public description: string,
+        public forClass: boolean,
+        public members: string[]
     ) {}
 }
