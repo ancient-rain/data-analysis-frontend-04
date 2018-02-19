@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Faculty } from '../../../models/faculty';
 
 @Component({
-  selector: 'app-faculty-info',
-  templateUrl: './faculty-info.component.html',
-  styleUrls: ['./faculty-info.component.css']
+  selector: 'app-faculty-desc',
+  templateUrl: './faculty-desc.component.html',
+  styleUrls: ['./faculty-desc.component.css']
 })
-export class FacultyInfoComponent {
+export class FacultyDescriptionComponent {
   @Input() faculty: Faculty;
 
   constructor() { }

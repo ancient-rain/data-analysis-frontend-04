@@ -7,7 +7,7 @@ import { CourseComponent } from './courses/courses.component';
 // import { SingleCourseInfoComponent } from './course-information/single-course-info/single-course-info.component';
 import { SearchComponent } from './search/search.component';
 import {
-    FacultyTermInfoComponent
+    FacultyTermInfoComponent, FacultyInfoComponent
 } from './faculty/index';
 import {
     StudentInfoComponent,
@@ -34,41 +34,9 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'signin',
-        pathMatch: 'full',
-        component: SignInComponent
-    }, {
-        path: 'create-group',
-        pathMatch: 'full',
-        component: CreateGroupComponent,
-        canActivate: [AuthGuard]
-    }, {
-        path: 'group/:id',
-        pathMatch: 'full',
-        component: ViewGroupComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'not-found',
-        pathMatch: 'full',
-        component: BadRequestComponent
-    },
-    {
         path: 'course/:name/:term',
         pathMatch: 'full',
         component: CourseComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'faculty/:username/:term',
-        pathMatch: 'full',
-        component: FacultyTermInfoComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'student/:username',
-        pathMatch: 'full',
-        component: StudentInfoComponent,
         canActivate: [AuthGuard]
     },
     {
@@ -93,6 +61,46 @@ const routes: Routes = [
         path: 'course/:name/students-not-taken/:year',
         pathMatch: 'full',
         component: CourseNotTakenYearComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'create-group',
+        pathMatch: 'full',
+        component: CreateGroupComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'faculty/:username',
+        pathMatch: 'full',
+        component: FacultyInfoComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'faculty/:username/:term',
+        pathMatch: 'full',
+        component: FacultyTermInfoComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'group/:id',
+        pathMatch: 'full',
+        component: ViewGroupComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'not-found',
+        pathMatch: 'full',
+        component: BadRequestComponent
+    },
+    {
+        path: 'signin',
+        pathMatch: 'full',
+        component: SignInComponent
+    },
+    {
+        path: 'student/:username',
+        pathMatch: 'full',
+        component: StudentInfoComponent,
         canActivate: [AuthGuard]
     },
     {
