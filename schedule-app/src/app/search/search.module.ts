@@ -9,6 +9,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { SearchComponent } from './search.component';
 import {
     MemberSearchComponent,
+    MembersSearchComponent,
     CourseSearchComponent
 } from './index';
 
@@ -24,11 +25,13 @@ import {
     declarations: [
         SearchComponent,
         MemberSearchComponent,
+        MembersSearchComponent,
         CourseSearchComponent
     ],
     exports: [
         SearchComponent,
         MemberSearchComponent,
+        MembersSearchComponent,
         CourseSearchComponent
     ]
 })

@@ -1,0 +1,41 @@
+<form [formGroup]="searchForm">
+  <mat-card>
+    <mat-card-content>
+      <mat-input-container dividerColor="accent">
+        <mat-select placeholder="Term" formControlName="term">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let term of terms" [value]="term">
+            {{term}}
+          </mat-option>
+        </mat-select>
+        <mat-hint>
+          <span [hidden]="searchForm.controls.term.valid || searchForm.controls.term.pristine">
+            You must select a term.
+          </span>
+        </mat-hint>
+      </mat-input-container>
+      <mat-input-container dividerColor="accent">
+        <input matInput placeholder="Add members by username" type="text" formControlName="members">
+        <mat-hint>
+          <mat-error *ngIf="membersEmpty">
+            You must have at least one member in the group.
+          </mat-error>
+        </mat-hint>
+      </mat-input-container>
+      <div class="spacer"></div>
+      <button mat-raised-button color="accent" (click)="addMember(searchForm.value.members)" fxLayoutAlign="end center">
+        Add Member
+      </button>
+      <div class="spacer"></div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <button mat-button color="primary" *ngFor="let member of members" (click)="removeMember(member)">
+          {{member}}
+        </button>
+      </div>
+      <div class="spacer"></div>
+    </mat-card-content>
+    <mat-card-actions style="margin-right:0;margin-left:0;">
+      <button mat-raised-button class="mat-primary" [disabled]="!searchForm.valid" (click)="search(searchForm.value)">Search</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
