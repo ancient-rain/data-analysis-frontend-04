@@ -1,6 +1,9 @@
 /* student-info components */
 export * from './student-info/student-info.component';
 
+/* view-student */
+export * from './view-students/view-students.component';
+
 /* student-term-info components */
 export * from './student-term-info/student-term-info.component';
 export * from './student-term-info/student-term-information/student-term-information.component';

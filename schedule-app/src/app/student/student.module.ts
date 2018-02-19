@@ -10,6 +10,7 @@ import {
   StudentTermInformationComponent,
   StudentCourseInfoComponent,
   StudentScheduleComponent,
+  ViewStudentsComponent
 } from './index';
 
 @NgModule({
@@ -24,7 +25,8 @@ import {
     StudentTermInfoComponent,
     StudentTermInformationComponent,
     StudentCourseInfoComponent,
-    StudentScheduleComponent
+    StudentScheduleComponent,
+    ViewStudentsComponent
   ],
   providers: [
     StudentService
@@ -34,7 +36,8 @@ import {
     StudentTermInfoComponent,
     StudentTermInformationComponent,
     StudentCourseInfoComponent,
-    StudentScheduleComponent
+    StudentScheduleComponent,
+    ViewStudentsComponent
   ]
 })
 export class StudentModule { }

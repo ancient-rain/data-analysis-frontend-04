@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Student } from '../models/student';
 import { StudentInfo } from '../models/student-info';
+import { StudentView } from '../models/student-view';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
@@ -21,6 +22,13 @@ export class StudentService {
   getStudentTermInfo(username: String, term: String): Observable<Student> {
     const url = `${this.domainUrl}/student/${username}/${term}`;
     return this.http.get<Student>(url)
+      .catch((error: any) =>
+        Observable.throw(error.json().error || 'Server error'));
+  }
+
+  getStudents(term: string, names: string): Observable<StudentView> {
+    const url = `${this.domainUrl}/students/${term}${names}`;
+    return this.http.get<StudentView>(url)
       .catch((error: any) =>
         Observable.throw(error.json().error || 'Server error'));
   }
