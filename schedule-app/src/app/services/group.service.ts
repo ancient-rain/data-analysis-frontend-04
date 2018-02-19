@@ -12,14 +12,14 @@ export class GroupService {
   constructor(private http: HttpClient) { }
 
   getGroupById(id: String): Observable<Group> {
-    const url = `${this.domainUrl}/groups/${id}`;
+    const url = `${this.domainUrl}/group/${id}`;
     return this.http.get<Group>(url)
       .catch((error: any) =>
         Observable.throw(error.json().error || 'Server error'));
   }
 
   createGroup(group) {
-    const url = `${this.domainUrl}/groups`;
+    const url = `${this.domainUrl}/group`;
     const body = {
       groupName: group.groupName,
       term: group.term,
@@ -30,6 +30,13 @@ export class GroupService {
     return this.http.post<PostGroup>(url, group)
       .catch((error: any) =>
         Observable.throw(error.json().error || 'POST error'));
+  }
+
+  deleteGroup(id: String) {
+    const url = `${this.domainUrl}/group/${id}`;
+    return this.http.delete<any>(url)
+      .catch((error: any) =>
+        Observable.throw(error.json().error || 'Server error'));
   }
 
 }
