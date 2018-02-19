@@ -11,7 +11,7 @@
     <div class="col-md-12">
       <mat-card class="container">
         <mat-card-title>
-          Listing all {{amount}} students who have not taken {{course}}
+          Listing all {{amount}} students who have not taken {{course.split('-')[0]}}
           <span fxFlex></span>
           <mat-radio-group fxLayout="row" fxLayoutAlign="end start">
             <div *ngFor="let val of radioVals">

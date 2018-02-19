@@ -12,14 +12,14 @@
       <mat-card class="container">
         <mat-card-title>
           <div *ngIf="amount > 1; else single">
-            Listing all {{amount}} Y{{year}} students who have taken {{course}}
+            Listing all {{amount}} Y{{year}} students who have taken {{course.split('-')[0]}}
           </div>
           <ng-template #single>
             <div *ngIf="amount === 1; else zero">
-              Listing one Y{{year}} student who has taken {{course}}
+              Listing one Y{{year}} student who has taken {{course.split('-')[0]}}
             </div>
             <ng-template #zero>
-              No Y{{year}} students have taken {{course}}
+              No Y{{year}} students have taken {{course.split('-')[0]}}
             </ng-template>
           </ng-template>
           <span fxFlex></span>
