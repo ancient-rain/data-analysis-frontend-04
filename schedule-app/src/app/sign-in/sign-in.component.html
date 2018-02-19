@@ -1,26 +1,35 @@
-<div class="container" fxLayout="column" fxLayoutAlgin="center center">
-    <mat-card *ngIf="!authService.isSignedIn(); else signOut">
-        <mat-card-title fxLayout fxLayoutAlign="center center">
-            <h2>Welcome</h2>
-        </mat-card-title>
-        <mat-card-content fxLayout="column" fxLayoutAlign="none center">
-            <button mat-raised-button color="accent" (click)="authService.signIn()">
-                Sign In
-            </button>
-            <br />
-            Only active Rose-Hulman students and faculty will have access to this site.
-        </mat-card-content>
+<div class="container">
+  <mat-card *ngIf="!authService.isSignedIn(); else signOut">
+    <mat-card-title>
+      <h2>Welcome to the new Schedule App!</h2>
+    </mat-card-title>
+    <mat-card-content fxLayout="column" fxLayoutAlign="center start">
+      <p>
+        There are several tools at Rose-Hulman that present data in different ways. For example, the schedule lookup page, banner
+        web, course catalogs, and moodle have data on students, faculty, courses, terms, and schedule. However, all the data
+        is not collocated; thus it is challenging to perform simple analyses on the data and glean simple information from
+        the collective dataset. This website brings all that data together into one collective dataset and give a user (e.g.,
+        department head, faculty, advisor, student) the ability to perform simple queries/analyses and glean important information
+        from the collective dataset.
+      </p>
+      <p>
+        <b>Only active Rose-Hulman students and faculty will have access to this site.</b>
+      </p>
+      <button mat-raised-button color="accent" (click)="authService.signIn()">
+        Sign In
+      </button>
+    </mat-card-content>
+  </mat-card>
+  <ng-template #signOut>
+    <mat-card>
+      <mat-card-title fxLayout fxLayoutAlign="center center">
+        <h2>Signed in as {{authService.getName()}}</h2>
+      </mat-card-title>
+      <mat-card-content fxLayout="column" fxLayoutAlign="none center">
+        <button mat-raised-button color="accent" (click)="authService.signOut()">
+          Sign Out
+        </button>
+      </mat-card-content>
     </mat-card>
-    <ng-template #signOut>
-        <mat-card>
-            <mat-card-title fxLayout fxLayoutAlign="center center">
-                <h2>Signed in as {{authService.getName()}}</h2>
-            </mat-card-title>
-            <mat-card-content fxLayout="column" fxLayoutAlign="none center">
-                <button mat-raised-button color="accent" (click)="authService.signOut()">
-                    Sign Out
-                </button>
-            </mat-card-content>
-        </mat-card>
-    </ng-template>
+  </ng-template>
 </div>

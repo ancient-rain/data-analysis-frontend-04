@@ -11,17 +11,15 @@ import { GroupService } from '../../services/group.service';
 export class CreateGroupComponent {
 
     terms = ['201630', '201710'];
-    students = [];
-    facultyMembers = [];
-    studentsEmpty = false;
-    facultyEmpty = false;
+    members = [];
+    membersEmpty = false;
 
     public groupForm = this.fb.group({
         groupName: ['', Validators.compose([Validators.required])],
-        class: ['', Validators.compose([Validators.required])],
+        description: ['', Validators.compose([Validators.required])],
+        forClass: ['', Validators.compose([Validators.required])],
         term: ['', Validators.compose([Validators.required])],
-        students: [''],
-        faculty: ['']
+        members: ['']
     });
 
     constructor(public fb: FormBuilder,
@@ -30,43 +28,34 @@ export class CreateGroupComponent {
 
     viewGroup(value) {
         if (this.groupForm.valid) {
-            if (this.checkArrays()) {
+            if (!this.isEmpty(this.members)) {
+                const forClass = value.forClass === 'true';
                 const group = {
                     groupName: value.groupName,
                     term: value.term,
-                    className: value.class,
-                    faculty: this.facultyMembers,
-                    students: this.students
+                    description: value.description,
+                    forClass: forClass,
+                    members: this.members
                 };
+
                 this.groupService.createGroup(group).subscribe(result => {
-                    this.router.navigate(['/groups', result._id]);
+                    console.log(result);
+                    this.router.navigate(['/group', result._id]);
                 });
             }
         }
     }
 
-    addStudent(student) {
-        const isExisting = this.isExisting(this.students, student);
-        if (!isExisting && student !== '') {
-            this.students.push(student);
-            this.groupForm.controls.students.reset();
+    addMember(member) {
+        const isExisting = this.isExisting(this.members, member);
+        if (!isExisting && member !== '') {
+            this.members.push(member.toUpperCase());
+            this.groupForm.controls.members.reset();
         }
     }
 
-    removeStudent(student) {
-        this.removeUsername(this.students, student);
-    }
-
-    addFaculty(faculty) {
-        const isExisting = this.isExisting(this.facultyMembers, faculty);
-        if (!isExisting && faculty !== '') {
-            this.facultyMembers.push(faculty);
-            this.groupForm.controls.faculty.reset();
-        }
-    }
-
-    removeFaculty(faculty) {
-        this.removeUsername(this.facultyMembers, faculty);
+    removeMember(member) {
+        this.removeUsername(this.members, member);
     }
 
     isEmpty(array: any[]) {
@@ -91,9 +80,8 @@ export class CreateGroupComponent {
     }
 
     checkArrays() {
-        this.isEmpty(this.students) ? this.studentsEmpty = true : this.studentsEmpty = false;
-        this.isEmpty(this.facultyMembers) ? this.facultyEmpty = true : this.facultyEmpty = false;
-        return !(this.studentsEmpty || this.facultyEmpty);
+        this.membersEmpty = this.isEmpty(this.members);
+        return !this.membersEmpty;
     }
 
 }

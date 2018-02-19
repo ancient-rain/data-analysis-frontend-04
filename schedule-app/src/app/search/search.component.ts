@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from './../services/auth.service';
 
 @Component({
     selector: 'app-search',
@@ -19,7 +20,9 @@ export class SearchComponent {
         term: ['', Validators.compose([Validators.required])]
     });
 
-    constructor(public fb: FormBuilder, private router: Router) { }
+    constructor(public fb: FormBuilder,
+        private authService: AuthService,
+        private router: Router) { }
 
     search(value) {
         if (this.searchForm.valid) {

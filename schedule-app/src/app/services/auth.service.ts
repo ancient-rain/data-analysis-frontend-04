@@ -88,7 +88,6 @@ export class AuthService {
   }
 
   checkUsername(username) {
-    console.log(localStorage.getItem('my-username'), username);
     return localStorage.getItem('my-username') === username;
   }
 
