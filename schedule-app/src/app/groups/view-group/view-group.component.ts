@@ -4,6 +4,7 @@ import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { GroupService } from '../../services/group.service';
 import { FilterDataService } from '../../services/filter-data.service';
 import { Group } from '../../models/group';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
     selector: 'app-view-group',
@@ -20,14 +21,17 @@ export class ViewGroupComponent implements OnInit {
     hours: number[];
     finalLength: number;
     students = [];
+    isGroupMember: boolean;
 
     constructor(private groupService: GroupService,
+        private authService: AuthService,
         private filterService: FilterDataService,
         private router: Router,
         private route: ActivatedRoute) {
         this.days = this.filterService.getDays();
         this.hours = this.filterService.getHours();
         this.finalLength = this.filterService.getFinalLength();
+        this.isGroupMember = false;
     }
 
     loadGroup() {
@@ -43,6 +47,7 @@ export class ViewGroupComponent implements OnInit {
             this.filterService.updateSchedule(this.schedule, data.courses);
             this.createCourseMap(data.members, data.courses);
             this.updateStudents(data.members);
+            this.isGroupMember = this.canDelete(data.members);
         });
     }
 
@@ -80,6 +85,16 @@ export class ViewGroupComponent implements OnInit {
         for (let i = 0; i < members.length; i++) {
             this.students.push(members[i].username);
         }
+    }
+
+    canDelete(members) {
+        const username = this.authService.getMyUsername();
+        for (let i = 0; i < members.length; i++) {
+            if (members[i].username === username) {
+                return true;
+            }
+        }
+        return false;
     }
 
     ngOnInit() {

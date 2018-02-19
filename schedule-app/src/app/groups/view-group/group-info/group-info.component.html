@@ -7,7 +7,10 @@
     </mat-expansion-panel-header>
     <mat-card-content>
       <p>For:
-        <a [routerLink]="['/course', group.for, term]">{{group.for}}</a>
+        <a *ngIf="group.forClass; else noClass" [routerLink]="['/course', group.for, term]">{{group.for}}</a>
+        <ng-template #noClass>
+          <p>{{group.for}}</p>
+        </ng-template>
       </p>
       <hr>
       <p>Members:</p>
@@ -24,6 +27,10 @@
             <span> : {{member.name}}</span>
           </p>
         </ng-template>
+      </div>
+      <hr>
+      <div *ngIf="isGroupMember" fxLayout="row" fxLayoutAlign="end end">
+        <button mat-button color="warn" (click)="delete()">Delete Group</button>
       </div>
     </mat-card-content>
   </mat-expansion-panel>
