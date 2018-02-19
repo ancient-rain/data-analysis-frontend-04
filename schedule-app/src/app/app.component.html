@@ -15,6 +15,10 @@
         <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/']">Home</a>
         <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/student', authService.getMyUsername()]">My Courses</a>
         <a mat-list-item (click)="sidenav.toggle()" [routerLink]="['/create-group']">Create a Group</a>
+        <a mat-list-item (click)="sidenav.toggle()" href="https://prod11gbss8.rose-hulman.edu/BanSS/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu&msg=WELCOME+Feb+18,+201805%3A34+pm"
+          target="_blank">Banner Web</a>
+        <a mat-list-item (click)="sidenav.toggle()" href="https://prodwebxe-hv.rose-hulman.edu/regweb-cgi/reg-sched.pl?&ticket=ST-08214d7a621b4545b9c55b464303d80e-bxeeis-hv.rose-hulman.edu"
+          target="_blank">Schedule Lookup</a>
         <a mat-list-item (click)="sidenav.toggle();authService.signOut();" style="color: inherit; text-decoration: none;">Sign Out</a>
       </mat-nav-list>
     </mat-sidenav>
