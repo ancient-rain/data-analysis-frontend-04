@@ -43,7 +43,7 @@ const routes: Routes = [
         component: CreateGroupComponent,
         canActivate: [AuthGuard]
     }, {
-        path: 'groups/:id',
+        path: 'group/:id',
         pathMatch: 'full',
         component: ViewGroupComponent,
         canActivate: [AuthGuard]
