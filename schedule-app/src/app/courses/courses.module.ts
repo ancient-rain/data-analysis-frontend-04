@@ -35,9 +35,6 @@ import {
   ],
   providers: [
     CourseService
-  ],
-  exports: [
-    CourseComponent
   ]
 })
 export class CourseModule { }
