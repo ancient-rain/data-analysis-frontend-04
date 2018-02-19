@@ -41,8 +41,8 @@ export class ViewGroupComponent implements OnInit {
 
             this.filterClasses(data);
             this.filterService.updateSchedule(this.schedule, data.courses);
-            this.createCourseMap(data.students, data.courses);
-            this.updateStudents(data.students);
+            this.createCourseMap(data.members, data.courses);
+            this.updateStudents(data.members);
         });
     }
 
@@ -54,17 +54,23 @@ export class ViewGroupComponent implements OnInit {
         }
     }
 
-    createCourseMap(students, courses) {
+    createCourseMap(members, courses) {
         for (let i = 0; i < courses.length; i++) {
             this.courseMap.set(courses[i].name, []);
         }
 
-        for (let i = 0; i < students.length; i++) {
-            const student = students[i];
-            for (let j = 0; j < student.courses.length; j++) {
-                const course = student.courses[j];
-                const value = this.courseMap.get(course);
-                value.push(student.username);
+        for (let i = 0; i < members.length; i++) {
+            const member = members[i];
+            for (let j = 0; j < member.courses.length; j++) {
+                const course = member.courses[j];
+                let value = this.courseMap.get(course);
+
+                if (value) {
+                    value.push(member.username);
+                } else {
+                    value = [member.username];
+                }
+
                 this.courseMap.set(course, value);
             }
         }
