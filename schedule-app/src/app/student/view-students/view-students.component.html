@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="terms" fxLayout="row" fxLayoutAlign="space-around center">
+        <div>
+          <button mat-button *ngIf="previousTerm !== ''; else previous" [routerLink]="['/students', previousTerm, names]">
+            <mat-icon>keyboard_arrow_left</mat-icon> Previous Term
+          </button>
+          <ng-template #previous>
+            <button mat-button disabled>
+              <mat-icon>keyboard_arrow_left</mat-icon> Previous Term
+            </button>
+          </ng-template>
+        </div>
+        <button mat-raised-button color="accent">{{curTerm}}</button>
+        <div>
+          <button mat-button *ngIf="nextTerm !== ''; else next" [routerLink]="['/students', nextTerm, names]">
+            Next Term
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+          <ng-template #next>
+            <button mat-button disabled>
+              Next Term
+              <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card>
+        <mat-card-content>
+          <table class="table">
+            <thead>
+              <tr class="headers">
+                <th>Name</th>
+                <th>Username</th>
+                <th>Year</th>
+                <th>Advisor</th>
+              </tr>
+              <tr *ngFor="let student of info">
+                <th>
+                  {{student.name}}
+                </th>
+                <th>
+                  <a [routerLink]="['/student', student.username, term]">{{student.username}}</a>
+                </th>
+                <th>
+                  {{student.year}}
+                </th>
+                <th>
+                  <a [routerLink]="['/faculty, student.advisor, term']">{{student.advisor}}</a>
+                </th>
+              </tr>
+            </thead>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

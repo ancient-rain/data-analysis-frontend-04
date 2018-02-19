@@ -1,8 +1,5 @@
 <form [formGroup]="courseForm" (ngSubmit)="search(courseForm.value)">
   <mat-card>
-    <mat-card-title>
-      Search for a Course
-    </mat-card-title>
     <mat-card-content>
       <mat-input-container dividerColor="accent">
         <input matInput placeholder="Course Name" type="text" formControlName="course">

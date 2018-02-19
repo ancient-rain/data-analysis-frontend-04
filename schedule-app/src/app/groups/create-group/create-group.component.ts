@@ -12,7 +12,7 @@ export class CreateGroupComponent {
 
     terms = ['201630', '201710'];
     members = [];
-    membersEmpty = false;
+    membersEmpty: boolean;
 
     public groupForm = this.fb.group({
         groupName: ['', Validators.compose([Validators.required])],
@@ -39,7 +39,6 @@ export class CreateGroupComponent {
                 };
 
                 this.groupService.createGroup(group).subscribe(result => {
-                    console.log(result);
                     this.router.navigate(['/group', result._id]);
                 });
             }
