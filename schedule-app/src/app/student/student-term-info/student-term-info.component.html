@@ -49,9 +49,9 @@
         </mat-card-title>
         <mat-card-content>
           <p>For:
-            <a *ngIf="group.forClass; else noClass" [routerLink]="['/course', group.for, term]">{{group.for}}</a>
+            <a *ngIf="group.forClass; else noClass" [routerLink]="['/course', group.description, term]">{{group.description}}</a>
             <ng-template #noClass>
-              <p>{{group.for}}</p>
+              <p>{{group.description}}</p>
             </ng-template>
           </p>
           <hr>
